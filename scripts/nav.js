@@ -1,5 +1,5 @@
 $('.navI').click(function() {
-    var mine = this.href.split('#')[1];
+    var mine = this.id.split('~')[1];
     $('.post').hide()
     $('#'+mine).show()
 })
@@ -7,4 +7,4 @@ $('.navI').click(function() {
 $('#viewAll').click(function() { $('.post').show() } )
 
 
-
+$('.post').hide()
