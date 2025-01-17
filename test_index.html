@@ -32,16 +32,12 @@
 		  width:20%"
 	   id="index"><tr><td><h2>Index</h2></td></tr>
       <tr><td> <button id="viewAll" class="navI">View All</button></td></tr>
+      {% for post in site.posts %}
       <tr>
-	<td><button id="button~NoPaywall" class="navI">January 2025</button></td>
-	<td>F**k a Paywall - Read the News</td>
-      </tr><tr>
-	<td><button id="button~GarbagePic" class="navI">July 2024</button></td>
-	<td>Garbage</td>
-      </tr><tr>
-	<td><button id="button~FucktheMoynihanTrainHall" class="navI">May 2024</button>
-	</td><td>F**k the Moynihan Train Hall</td>
+	<td><button id="button~{{ post.id }}" class="navI">{{ post.date }}</button></td>
+	<td>{{ post.title }}</td>
       </tr>
+      {% endfor $}
     </table>
     <div style="
 		margin-left: .4%;
@@ -52,10 +48,13 @@
     <br>
     
     {% for post in site.posts %}    
+
     <div class="post" id="{{ post.id }}">
-      <h4>{{ post.title }}</h4>
+      <a href="#{{post.id}}" style="float:right">{{ post.date }}</a>
+      <h3 class="essaytitle" style="margin-bottom: 0px">{{post.title}}</h3>
       {{ post.content }}
     </div>
+
     {% endfor %}
 
     <div class="post" id="FucktheMoynihanTrainHall" style="display: none;">
