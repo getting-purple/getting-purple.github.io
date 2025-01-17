@@ -3,36 +3,35 @@
 <html>
   <head>
     <style>
+      body {
+	  font:small-caption;background-color:rgb(231, 195, 247);
+      }
       * {
-          margin: 0;
-          padding: 0;
+          margin: 0;         padding: 0;
       }
       .imgbox {
-          display: grid;
-          height: 100%;
+          display: grid;     height: 100%;
       }
       .center-fit {
-          max-width: 25%;
-          max-height: 50vh;
-          margin: 3%;
+          max-width: 25%;    max-height: 50vh;
+	  margin: 3%;
       }
       .post {
-          border:3px solid black; 
-          padding: 2%; 
-          margin: 3%; 
-          width: 66%;
+          padding: 2%;       border:3px solid black;
+          margin: 3%;        width: 66%;
       }
       .navI {
-	  float:right;
+	  float:right;	     background:none;
+      }
+      .index{
+	  float:right;       margin-right:1%;
+          width:25%
       }
     </style>
   </head>
 
-  <body style="background-color:rgb(231, 195, 247); font:small-caption;">
-    <table style="float:right;
-		  margin-right:1%;
-		  width:25%"
-	   id="index"><tr><td><h2>Index</h2></td></tr>
+  <body>
+    <table id="index"><tr><td><h2>Index</h2></td></tr>
       <tr>
 	<td> <button id="viewAll" class="navI">View All</button></td>
 	<td> <button id="hideAll" class="navI" style="float:left">Clear</button></td>

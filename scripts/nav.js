@@ -2,6 +2,11 @@ $('.navI').click(function() {
     var mine = this.id.split('~')[1];
     $('.post').hide()
     $('#'+mine).show()
+
+    $('.navI').css('background','none')
+    if (this.id.includes('button~')) {    
+        $(this).css('background','cyan')
+    }
 })
 
 $('#viewAll').click(function() { $('.post').show() } )
