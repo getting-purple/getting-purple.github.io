@@ -5,6 +5,7 @@ $('.navI').click(function() {
 })
 
 $('#viewAll').click(function() { $('.post').show() } )
+$('#viewAll').click(function() { $('.post').hide() } )
 
 $('.post').hide()
 

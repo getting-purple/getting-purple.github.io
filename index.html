@@ -33,8 +33,11 @@
 		  margin-right:1%;
 		  width:25%"
 	   id="index"><tr><td><h2>Index</h2></td></tr>
-      <tr><td> <button id="viewAll" class="navI">View All</button></td></tr>
-
+      <tr>
+	<td> <button id="viewAll" class="navI">View All</button></td>
+	<td> <button id="hideAll" class="navI">Clear</button></td>
+      </tr>
+      
       {% for post in site.posts %}
       <tr>
 	<td><button id="button~{{ post.real_id }}" class="navI">{{ post.date | date_to_string}}</button></td>
