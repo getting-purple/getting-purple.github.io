@@ -20,8 +20,8 @@ $('#hideAll').click(function() {
     $(this).css('background','lightslategrey')
 } )
 
-$('.post').hide()
+// $('.post').hide()
 
-$('.post').each(function() {
-    if (window.location.href.split('#')[1] == this.id) {$('#'+this.id).show()}
-})
+// $('.post').each(function() {
+//     if (window.location.href.split('#')[1] == this.id) {$('#'+this.id).show()}
+// })
