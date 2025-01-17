@@ -6,5 +6,8 @@ $('.navI').click(function() {
 
 $('#viewAll').click(function() { $('.post').show() } )
 
-
 $('.post').hide()
+
+$('.post').each(function() {
+    if (window.location.href.split('#')[1] == this.id) {$('#'+this.id).show()}
+})
