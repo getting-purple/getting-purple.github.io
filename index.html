@@ -37,7 +37,7 @@
 
       {% for post in site.posts %}
       <tr>
-	<td><button id="button~{{ post.real_id }}" class="navI">{{ post.date | date_to_string: "ordinal", "US"  | date: %b %Y }}</button></td>
+	<td><button id="button~{{ post.real_id }}" class="navI">{{ post.date | date_to_string}}</button></td>
 	<td>{{ post.title | replace: "Fuck", "F**k" }}</td>
       </tr>
       {% endfor %}
@@ -52,7 +52,7 @@
     
     {% for post in site.posts %}    
     <div class="post" id="{{ post.real_id }}">
-      <a href="#{{post.id}}" style="float:right">{{ post.date | date_to_string: "ordinal", "US"  }}</a>
+      <a href="#{{post.id}}" style="float:right">{{ post.date | date_to_string}}</a>
       <h3 class="essaytitle" style="margin-bottom: 0px">{{post.title}}</h3>
       {{ post.content }}
     </div>
