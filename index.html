@@ -52,7 +52,7 @@
     
     {% for post in site.posts %}    
     <div class="post" id="{{ post.real_id }}">
-      <a href="#{{post.id}}" style="float:right">{{ post.date | date_to_string}}</a>
+      <a href="#{{post.real_id}}" style="float:right">{{ post.date | date_to_string}}</a>
       <h3 class="essaytitle" style="margin-bottom: 0px">{{post.title}}</h3>
       {{ post.content }}
     </div>
