@@ -7,6 +7,8 @@ $('.navI').click(function() {
     if (this.id.includes('button~')) {    
         $(this).css('background','cyan')
     }
+
+    
 })
 
 $('#viewAll').click(function() { $('.post').show() } )
@@ -17,3 +19,6 @@ $('.post').hide()
 $('.post').each(function() {
     if (window.location.href.split('#')[1] == this.id) {$('#'+this.id).show()}
 })
+
+if (window.location.href.includes('viewAll')
+    $('.post').show()
