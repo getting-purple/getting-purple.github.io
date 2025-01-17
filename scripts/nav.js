@@ -5,14 +5,20 @@ $('.navI').click(function() {
 
     $('.navI').css('background','none')
     if (this.id.includes('button~')) {    
-        $(this).css('background','cyan')
+        $(this).css('background','darkseagreen')
     }
 
     
 })
 
-$('#viewAll').click(function() { $('.post').show() } )
-$('#hideAll').click(function() { $('.post').hide() } )
+$('#viewAll').click(function() {
+    $('.post').show()
+    $(this).css('background','darkseagreen')
+})
+$('#hideAll').click(function() {
+    $('.post').hide()
+   $(this).css('background','lightslategrey')
+} )
 
 $('.post').hide()
 
