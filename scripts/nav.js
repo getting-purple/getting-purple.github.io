@@ -17,7 +17,7 @@ $('#viewAll').click(function() {
 })
 $('#hideAll').click(function() {
     $('.post').hide()
-   $(this).css('background','lightslategrey')
+    $(this).css('background','lightslategrey')
 } )
 
 $('.post').hide()
@@ -25,6 +25,3 @@ $('.post').hide()
 $('.post').each(function() {
     if (window.location.href.split('#')[1] == this.id) {$('#'+this.id).show()}
 })
-
-if (window.location.href.includes('viewAll')
-    $('.post').show()
