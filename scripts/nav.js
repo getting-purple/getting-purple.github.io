@@ -24,5 +24,3 @@ $('a').attr('target', function() {
   if(this.host == location.host) return '_self'
   else return '_blank'
 })
-
-$('#hideAll').trigger('click')
