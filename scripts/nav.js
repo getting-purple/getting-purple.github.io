@@ -20,8 +20,7 @@ $('#hideAll').click(function() {
     $(this).css('background','lightslategrey')
 } )
 
-// $('.post').hide()
-
-// $('.post').each(function() {
-//     if (window.location.href.split('#')[1] == this.id) {$('#'+this.id).show()}
-// })
+$('a').attr('target', function() {
+  if(this.host == location.host) return '_self'
+  else return '_blank'
+})
