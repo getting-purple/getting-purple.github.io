@@ -10,8 +10,8 @@ The Wayback Machine is a great resource for many things on the internet: this In
 2. Copy the URL of the article you are blocked out of  
 3. Go to  https://web.archive.org  
 4. Paste the article URL into the WaybackMachine search bar  
-5.Click on any / the most recently archived version of the article  
-6.Read and enjoy!  
+5. Click on any / the most recently archived version of the article  
+6. Read and enjoy!  
 <br>
 *Copy and Paste*  
 You may have noticed that many article paywalls work by first loading the entire article, then a second later popping up a window blocking the article text that says something like "Pay us Bitch". Most article paywalls that work this way can be circumvented pretty easily.  
