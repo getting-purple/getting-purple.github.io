@@ -63,7 +63,7 @@
       {% if post.subtitle %}
       {% assign spacing = post.date | date: "%d" | to_i | modulo: 5 | plus: 9 %}
       <span style="letter-spacing: {{spacing}}px; display:inline">
-	on <h4 class="essaytitle"  style="margin-bottom: 0px">{{post.subtitle}}</h3>
+	on <h4 class="essaytitle"  style="margin-bottom: 0px;display:inline">{{post.subtitle}}</h3>
       </span>
       {% endif %}
 <hr style="width:33.33%">
