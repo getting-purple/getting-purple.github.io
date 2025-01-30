@@ -1,6 +1,7 @@
 ---
 real_id: NoPaywall
-title: Fuck a Paywall - Read the News
+title: Fuck a Paywall
+subtitle: Read the News
 ---
 Hitting a paywall blocking an article is a frustrating experience you've probably had if you read the news online -- whether its blocking you from reading critical information about an ongoing emergency event, staying informed about local politics, or just reading that article your dad sent you because you know he's going to want to talk about it the next time you call him -- but it doesn't have to be. Here are some ways you can bypass paywalls to read many articles you want to access without paying for them:  
 <br>
