@@ -57,6 +57,7 @@
     <div class="post" id="{{ post.real_id }}">
       <a href="#{{post.real_id}}" style="float:right">{{ post.date | date_to_string}}</a>
       <h3 class="essaytitle" style="margin-bottom: 0px">{{post.title}}</h3>
+      <h4 class="essaytitle" style="margin-bottom: 0px">{{post.subtitle}}</h3>
       {{ post.content }}
     </div>
     {% endfor %}
