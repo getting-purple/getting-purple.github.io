@@ -61,7 +61,10 @@
       <a href="#{{post.real_id}}" style="float:right">{{ post.date | date_to_string}}</a>
       <h3 class="essaytitle" style="margin-bottom: 0px">{{post.title}}</h3>
       {% if post.subtitle %}
-      on <h4 class="essaytitle" style="margin-bottom: 0px">{{post.subtitle}}</h3>
+      {% assign spacing = post.date | date: "%d" | to_i | modulo: 5 | plus: 9 %}
+      <span style="letter-spacing: {{spacing}}px; display:inline">
+	on <h4 class="essaytitle"  style="margin-bottom: 0px">{{post.subtitle}}</h3>
+      </span>
       {% endif %}
 <hr style="width:33.33%">
 {{ post.content }}
