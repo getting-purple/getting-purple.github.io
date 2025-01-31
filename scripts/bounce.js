@@ -45,24 +45,24 @@ function bounce() {
     
     if (b.position().top + b.height() > window.innerHeight && dy > 0) { // $('body').height()
 	angle=-1*angle;
-	spinSpeed=speed * Math.cos(angle);
+	spinSpeed=Math.sqrt(speed) * Math.cos(angle);
 	spin();
 	
     }
     if (b.position().top < 0 && dy < 0) {
 	angle=-1*angle;
-	spinSpeed=speed * Math.cos(angle) * -1;
+	spinSpeed=Math.sqrt(speed) * Math.cos(angle) * -1;
 	spin();
     }
 
     if (b.position().left < 0 && dx < 0) {
 	angle=Math.PI-angle;
-	spinSpeed=speed * Math.sin(angle);
+	spinSpeed=Math.sqrt(speed) * Math.sin(angle);
 	spin();
     }
     if (b.position().left + b.width() >  window.innerWidth && dx > 0) { // $('body').width()
 	angle=Math.PI-angle;
-	spinSpeed=speed * Math.sin(angle) * -1;
+	spinSpeed=Math.sqrt(speed) * Math.sin(angle) * -1;
 	spin();
     }
     dy=Math.sin(angle)*Math.sqrt(2);
