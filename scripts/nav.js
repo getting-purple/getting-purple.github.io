@@ -25,7 +25,7 @@ $('a').attr('target', function() {
   else return '_blank'
 })
 
-let keep_going=true;
+let keep_going=false;
 let b = $('#bouncer');
 let y=0; let x=0;
 let dy=1;  let dx=1;
@@ -40,19 +40,23 @@ function bounce() {
     b.css('top',y);
     b.css('left',x);
     
-    if (b.position().top + b.height() > $('body').height()) {dy=-1}
-    if (b.position().top < 0) {dy=1}
+    if (b.position().top + b.height() > $('body').height() && dy > 0) {dy=-1 * dy}
+    if (b.position().top < 0 && dy < 0) {dy=-1 * dy}
 
-    if (b.position().left < 0) {dx=1}
-    if (b.position().left + b.width() > $('body').width()) {dx=-1}
+    if (b.position().left < 0 && dx < 0) {dx=-1 * dx}
+    if (b.position().left + b.width() > $('body').width() && dx > 0) {dx=-1 * dx}
 
     if (keep_going) {setTimeout(function() {bounce()}, smooth)}
 }
 function start_bouncing() {
-    console.log("comence bouncing");
-    b.show()
-    keep_going = true;
-    speed=START_SPEED;
+    if (!keep_going) {
+	console.log("comence bouncing");
+	b.show()
+	keep_going=true;
+	speed=START_SPEED;
+	let angle = Math.random() * 2 * Math.PI);
+    dy=Math.sin(angle)*Math.sqrt(2);
+    dx=Math.cos(angle)*Math.sqrt(2);
     bounce();
 }
 
