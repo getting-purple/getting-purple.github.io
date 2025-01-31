@@ -3,7 +3,7 @@ let b = $('#bouncer');
 let y=0; let x=0;
 let dy=1;  let dx=1;
 let smooth=10;
-const START_SPEED=1;
+const START_SPEED=5;
 let speed=START_SPEED;
 let angle,ady,adx;
 let speedIncreasing=true;
@@ -88,8 +88,7 @@ $('#startBouncing').click(function() {
 $('#stopBouncing').click(function() {
     $('#startBouncing').css('background','none');
     $(this).css('background','lightslategrey');
-    keep_going = false;
-    speedIncreasing=true;
+    decayToZero()
 })
 
 function randomTurn(w) {
@@ -115,11 +114,22 @@ function growBurst(){
     if (speed < max_burst) setTimeout(growBurst,10);
     else decayBurst();
 }
+
 function decayBurst(){
     burst = burst *.95;
     speed = old_speed + burst;
     if (speed > old_speed * 1.1) setTimeout(decayBurst,50);
     else console.log("done: speed="+speed+"; burst="+burst+"; max_burst="+max_burst);
+}
+
+function decayToZero(){
+    burst = burst *.95;
+    speed = old_speed + burst;
+    if (speed > 0.01) setTimeout(decayBurst,50);
+    else {
+	keep_going = false;
+	speedIncreasing=true;
+    }
 }
 
 function startBurst() {
