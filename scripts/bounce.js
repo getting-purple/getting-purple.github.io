@@ -56,13 +56,13 @@ function start_bouncing() {
 
 $('#startBouncing').click(function() {
     $('#stopBouncing').css('background','none');
-    $(this).css('background','darkseagreen');
+    $(this).css('background','gold');
     start_bouncing();
 })
 
 $('#stopBouncing').click(function() {
     $('#startBouncing').css('background','none');
-    $(this).css('background','lightcoral');
+    $(this).css('background','lightslategrey');
     keep_going = false;
     speedIncreasing=true;
 })
@@ -77,7 +77,7 @@ $('#turnBouncer').click(function() {
     old_speed=speed*.8;
     decayBurst();
 })
-$('#turnBouncer').mousedown(function(){$(this).css('background','indianred')})
+$('#turnBouncer').mousedown(function(){$(this).css('background','lightcoral')})
 $('#turnBouncer').mouseup(function(){$(this).css('background','none')})
 
 
@@ -104,5 +104,5 @@ function startBurst() {
 }
 
 $('#burst').click(startBurst);
-$('#burst').mousedown(function(){$(this).css('background','indianred')})
+$('#burst').mousedown(function(){$(this).css('background','darkseagreen')})
 $('#burst').mouseup(function(){$(this).css('background','none')})
