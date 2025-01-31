@@ -14,11 +14,23 @@ function bounce() {
     b.css('top',y);
     b.css('left',x);
     
-    if (b.position().top + b.height() > $('body').height() && dy > 0) {dy=-1 * dy}
-    if (b.position().top < 0 && dy < 0) {dy=-1 * dy}
+    if (b.position().top + b.height() > $('body').height() && dy > 0) {
+	dy=-1 * dy;
+	angle=-1*angle;
+    }
+    if (b.position().top < 0 && dy < 0) {
+	dy=-1 * dy;
+	angle=-1*angle;
+    }
 
-    if (b.position().left < 0 && dx < 0) {dx=-1 * dx}
-    if (b.position().left + b.width() > $('body').width() && dx > 0) {dx=-1 * dx}
+    if (b.position().left < 0 && dx < 0) {
+	dx=-1 * dx;
+	angle=2*Math.PI-angle;
+    }
+    if (b.position().left + b.width() > $('body').width() && dx > 0) {
+	dx=-1 * dx;
+	angle=2*Math.PI-angle;
+    }
 
     if (keep_going) {setTimeout(function() {bounce()}, smooth)}
 }
@@ -52,12 +64,6 @@ $('#stopBouncing').click(function() {
 
 $('#turnBouncer').click(function() {
     angle += Math.random()*Math.PI/2 - Math.PI/4;
-    if (Math.sign(dx)!=Math.sign(adx) && Math.sign(dy)!=Math.sign(ady))
-	angle -= Math.PI
-    else if (Math.sign(dx)!=Math.sign(adx))
-	angle += Math.PI/2
-    else if (Math.sign(dy)!=Math.sign(ady))
-        angle -= Math.PI/2
     dy=Math.sin(angle)*Math.sqrt(2);
     dx=Math.cos(angle)*Math.sqrt(2);
 })
