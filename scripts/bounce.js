@@ -82,4 +82,3 @@ function startBurst() {
 $('#burst').click(startBurst);
 $('#burst').mousedown(function(){$(this).css('background','indianred')})
 $('#burst').mouseup(function(){$(this).css('background','none')})
-B
