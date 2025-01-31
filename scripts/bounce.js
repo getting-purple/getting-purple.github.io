@@ -64,6 +64,7 @@ $('#stopBouncing').click(function() {
     $('#startBouncing').css('background','none');
     $(this).css('background','lightcoral');
     keep_going = false;
+    speedIncreasing=true;
 })
 
 
