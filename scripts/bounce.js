@@ -67,13 +67,15 @@ $('#stopBouncing').click(function() {
     speedIncreasing=true;
 })
 
-function randomTurn(x) {
-    angle += Math.random()*Math.PI/2*x - Math.PI/4*x;
+function randomTurn(w) {
+    r = Math.random()
+    angle += r*w - w/2;
     dy=Math.sin(angle)*Math.sqrt(2);
     dx=Math.cos(angle)*Math.sqrt(2);
 }
 $('#turnBouncer').click(function() {
-    randomTurn(1);
+    angle += Math.PI;
+    randomTurn(Math.PI/3);
     old_speed=speed*.8;
     decayBurst();
 })
@@ -96,7 +98,7 @@ function decayBurst(){
 }
 
 function startBurst() {
-    randomTurn(.5);
+    randomTurn(Math.PI/4);
     old_speed=speed;
     max_burst=speed*3;
     burst=1;
