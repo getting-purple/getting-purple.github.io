@@ -21,6 +21,7 @@ function bounce() {
 
     if (keep_going) {setTimeout(function() {bounce()}, smooth)}
 }
+
 function start_bouncing() {
     if (!keep_going) {
 	console.log("comence bouncing");
@@ -31,6 +32,7 @@ function start_bouncing() {
 	dy=Math.sin(angle)*Math.sqrt(2);
 	dx=Math.cos(angle)*Math.sqrt(2);
 	bounce();
+    }
 }
 
 $('#startBouncing').click(function() {
@@ -38,7 +40,7 @@ $('#startBouncing').click(function() {
     $(this).css('background','darkseagreen');
     start_bouncing();
 })
- 
+
 $('#stopBouncing').click(function() {
     $('#startBouncing').css('background','none');
     $(this).css('background','lightcoral');
@@ -64,8 +66,8 @@ function decayBurst(){
 function startBurst() {
     old_speed=speed;
     max_burst=speed*3;
-    burst=1
-    growBurst()
+    burst=1;
+    growBurst();
 }
 
 $('#burst').click(startBurst);
