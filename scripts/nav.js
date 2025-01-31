@@ -49,4 +49,12 @@ function start_bouncing() {
     b.show()
     bounce(0,0,1,1,.1,1);
 }
-setTimeout(start_bouncing, 5 * 60 * 1000);
+$('#startBouncing').click(function() {
+    $(this).css('background','darkseagreen');
+    start_bouncing();
+})
+
+$('#stopBouncing').click(function() {
+    $('#startBouncing').css('background','none');
+    clearInterval();
+})
