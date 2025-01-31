@@ -6,11 +6,18 @@ let smooth=10;
 const START_SPEED=1;
 let speed=START_SPEED;
 let angle,ady,adx;
+let speedIncreasing=true;
 function bounce() {
     y = y + dy*(smooth/100*speed);
     x = x + dx*(smooth/100*speed);
-    speed = speed + 0.01
-    
+    if (speedIncreasing) {
+	speed = speed + 0.01;
+	if (speed > 250) speedIncreasing=false;
+    } else {
+	speed = speed - 0.005;
+	if (speed < 5) speedIncreasing=false;
+	
+    }
     b.css('top',y);
     b.css('left',x);
     
