@@ -88,7 +88,8 @@ $('#startBouncing').click(function() {
 $('#stopBouncing').click(function() {
     $('#startBouncing').css('background','none');
     $(this).css('background','lightslategrey');
-    decayToZero()
+    speedIncreasing=false;
+    decayToZero();
 })
 
 function randomTurn(w) {
@@ -123,8 +124,7 @@ function decayBurst(){
 }
 
 function decayToZero(){
-    burst = burst *.95;
-    speed = old_speed + burst;
+    speed = speed*0.95;
     if (speed > 0.01) setTimeout(decayBurst,50);
     else {
 	keep_going = false;
