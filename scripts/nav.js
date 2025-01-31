@@ -80,7 +80,8 @@ function growBurst(){
 function decayBurst(){
     burst = burst *.95;
     speed = old_speed + burst
-    if (speed > old_speed + 1) setTimeout(decayBurst,50)
+    if (speed > old_speed * 1.1) setTimeout(decayBurst,50)
+    else console.log("done: speed="+speed+"; burst="+burst+"; max_burst="+max_burst);
 }
 
 function startBurst() {
