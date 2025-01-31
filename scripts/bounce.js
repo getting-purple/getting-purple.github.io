@@ -125,7 +125,7 @@ function decayBurst(){
 function startBurst() {
     randomTurn(Math.PI/4);
     old_speed=speed;
-    max_burst=speed*3;
+    max_burst=1500-(400000/(speed+266.67))
     burst=1;
     growBurst();
 }
