@@ -58,8 +58,8 @@ $('#turnBouncer').click(function() {
 	angle += Math.PI/2
     else if (Math.sign(dy)!=Math.sign(ady))
         angle -= Math.PI/2
-    dy=Math.sin(angle)*Math.sqrt(2)*Math.sign(dy);
-    dx=Math.cos(angle)*Math.sqrt(2)*Math.sign(dx);    
+    dy=Math.sin(angle)*Math.sqrt(2);
+    dx=Math.cos(angle)*Math.sqrt(2);
 })
 $('#turnBouncer').mousedown(function(){$(this).css('background','indianred')})
 $('#turnBouncer').mouseup(function(){$(this).css('background','none')})
