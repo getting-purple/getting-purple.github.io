@@ -51,8 +51,8 @@ $('#stopBouncing').click(function() {
 
 $('#turnBouncer').click(function() {
     angle += Math.random()*Math.PI/2 - Math.PI/4;
-    dy=Math.sin(angle)*Math.sqrt(2);
-    dx=Math.cos(angle)*Math.sqrt(2);    
+    dy=Math.sin(angle)*Math.sqrt(2)*Math.sign(dy);
+    dx=Math.cos(angle)*Math.sqrt(2)*Math.sign(dx);    
 })
 $('#turnBouncer').mousedown(function(){$(this).css('background','indianred')})
 $('#turnBouncer').mouseup(function(){$(this).css('background','none')})
@@ -82,3 +82,4 @@ function startBurst() {
 $('#burst').click(startBurst);
 $('#burst').mousedown(function(){$(this).css('background','indianred')})
 $('#burst').mouseup(function(){$(this).css('background','none')})
+B
