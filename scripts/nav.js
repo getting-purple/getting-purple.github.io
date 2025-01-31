@@ -40,7 +40,7 @@ function bounce(top, right,dy,dx) {
 
     console.log("  top: "+top);
     console.log("right: "+right);
-    setTimeout(function() {bounce(top,right)}, 100);
+    setTimeout(function() {bounce(top,right,dy,dx)}, 100);
 }
 function start_bouncing() {
     console.log("comence bouncing");
