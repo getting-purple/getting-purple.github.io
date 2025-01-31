@@ -27,18 +27,18 @@ $('a').attr('target', function() {
 
 let keep_going=true;
 let b = $('#bouncer');
-let top=0; let left=0;
+let y=0; let x=0;
 let dy=1;  let dx=1;
 let smooth=50;
 const START_SPEED=1;
 let speed=START_SPEED;
 function bounce() {
-    top = top + dy*(smooth/100*speed);
-    left = left + dx*(smooth/100*speed);
+    y = y + dy*(smooth/100*speed);
+    x = x + dx*(smooth/100*speed);
     speed = speed + 0.001
     
-    b.css('top',top);
-    b.css('left',left);
+    b.css('top',y);
+    b.css('left',x);
     
     if (b.position().top + b.height() > window.innerHeight) {dy=-1}
     if (b.position().top < 0) {dy=1}
