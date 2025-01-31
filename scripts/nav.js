@@ -26,11 +26,16 @@ $('a').attr('target', function() {
 })
 
 let keep_going=true;
-let b = $('#bouncer')
-function bounce(top, left,dy,dx,smooth,speed) {
-    top = top + dy*(smooth*speed);
-    left = left + dx*(smooth*speed);
-    speed = speed + 0.1
+let b = $('#bouncer');
+let top=0; let left=0;
+let dy=1;  let dx=1;
+let smooth=50;
+const START_SPEED=1;
+let speed=START_SPEED;
+function bounce() {
+    top = top + dy*(smooth/100*speed);
+    left = left + dx*(smooth/100*speed);
+    speed = speed + 0.001
     
     b.css('top',top);
     b.css('left',left);
@@ -43,18 +48,14 @@ function bounce(top, left,dy,dx,smooth,speed) {
 
     console.log("  top: "+top);
     console.log("left: "+left);
-    if (keep_going) {setTimeout(function() {bounce(top,left,dy,dx,smooth,speed)}, 100*smooth)}
+    if (keep_going) {setTimeout(function() {bounce()}, smooth)}
 }
 function start_bouncing() {
     console.log("comence bouncing");
     b.show()
-    if (keep_going)
-	bounce(0,0,1,1,.1,1);
-    else {
-	keep_going = true;
-	bounce(b.position().top,
-	       b.position().left,
-	       1,1,.1,1);
+    keep_going = true;
+    speed=START_SPEED;
+    bounce();
     }
 }
 $('#startBouncing').click(function() {
