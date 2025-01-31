@@ -15,7 +15,7 @@ function spin() {
 	rotationAngle = (rotationAngle + spinSpeed) % 360;
 	b.css("transform", "rotate(" + rotationAngle + "deg)");
 	spinSpeed = spinSpeed * .99;
-	setTimout(function() {
+	setTimeout(function() {
 	}, 10)
     }
 }
