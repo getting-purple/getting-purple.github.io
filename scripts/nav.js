@@ -46,8 +46,6 @@ function bounce() {
     if (b.position().left < 0) {dx=1}
     if (b.position().left + b.width() > window.innerWidth) {dx=-1}
 
-    console.log("  top: "+top);
-    console.log("left: "+left);
     if (keep_going) {setTimeout(function() {bounce()}, smooth)}
 }
 function start_bouncing() {
