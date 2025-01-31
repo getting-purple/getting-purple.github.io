@@ -14,7 +14,7 @@ function bounce() {
     b.css('top',y);
     b.css('left',x);
     
-    if (b.position().top + b.height() > $('body').height() && dy > 0) {
+    if (b.position().top + b.height() > window.innerHeight() && dy > 0) { // $('body').height()
 	dy=-1 * dy;
 	angle=-1*angle;
     }
@@ -27,7 +27,7 @@ function bounce() {
 	dx=-1 * dx;
 	angle=Math.PI-angle;
     }
-    if (b.position().left + b.width() > $('body').width() && dx > 0) {
+    if (b.position().left + b.width() >  window.innerWidth()&& dx > 0) { // $('body').width()
 	dx=-1 * dx;
 	angle=Math.PI-angle;
     }
