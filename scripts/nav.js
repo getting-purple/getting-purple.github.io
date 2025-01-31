@@ -29,7 +29,7 @@ let b = $('#bouncer')
 function bounce(top, left,dy,dx,smooth,speed) {
     top = top + dy*(smooth*speed);
     left = left + dx*(smooth*speed);
-    speed = speed * 1.1
+    speed = speed + 0.1
     
     b.css('top',top);
     b.css('left',left);
@@ -47,6 +47,6 @@ function bounce(top, left,dy,dx,smooth,speed) {
 function start_bouncing() {
     console.log("comence bouncing");
     b.show()
-    bounce(0,0,1,1,.1,1));
+    bounce(0,0,1,1,.1,1);
 }
 setTimeout(start_bouncing, 5 * 60 * 1000);
