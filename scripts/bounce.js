@@ -36,7 +36,7 @@ function bounce() {
 	    
 	}
     } else {
-	speed = speed*0.5;
+	speed = speed*(Math.max(0.5,0.95-(x/1000)))
     }
     
     b.css('top',y);
