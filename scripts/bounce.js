@@ -15,7 +15,7 @@ function bounce() {
 	if (speed > 250) speedIncreasing=false;
     } else {
 	speed = speed - 0.005;
-	if (speed < 5) speedIncreasing=false;
+	if (speed < 5) speedIncreasing=true;
 	
     }
     b.css('top',y);
