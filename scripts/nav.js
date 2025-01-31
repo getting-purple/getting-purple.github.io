@@ -56,8 +56,8 @@ function start_bouncing() {
     keep_going = true;
     speed=START_SPEED;
     bounce();
-    }
 }
+
 $('#startBouncing').click(function() {
     $('#stopBouncing').css('background','none');
     $(this).css('background','darkseagreen');
