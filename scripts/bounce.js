@@ -39,13 +39,13 @@ function bounce() {
     
     if (b.position().top + b.height() > window.innerHeight && dy > 0) { // $('body').height()
 	angle=-1*angle;
-	spinSpeed=speed * Math.cos(angle) * -1;
+	spinSpeed=speed * Math.cos(angle);
 	spin();
 	
     }
     if (b.position().top < 0 && dy < 0) {
 	angle=-1*angle;
-	spinSpeed=speed * Math.cos(angle);
+	spinSpeed=speed * Math.cos(angle) * -1;
 	spin();
     }
 
