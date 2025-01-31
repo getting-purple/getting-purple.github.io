@@ -58,11 +58,13 @@ function start_bouncing() {
     }
 }
 $('#startBouncing').click(function() {
+    $('#stopBouncing').css('background','none');
     $(this).css('background','darkseagreen');
     start_bouncing();
 })
 
 $('#stopBouncing').click(function() {
     $('#startBouncing').css('background','none');
+    $(this).css('background','lightslategrey');
     keep_going = false;
 })
