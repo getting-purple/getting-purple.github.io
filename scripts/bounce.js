@@ -9,8 +9,9 @@ let angle,ady,adx;
 let speedIncreasing=true;
 let spinSpeed=0;
 let rotationAngle=0;
-let spinThresh=0.01
-let spinDecay=0.99
+let spinThresh=0.01;
+let spinDecay=0.99;
+let stopping=false;
 
 function spin() {
     if (Math.abs(spinSpeed) > spinThresh) {
@@ -25,14 +26,19 @@ function spin() {
 function bounce() {
     y = y + dy*(smooth/100*speed);
     x = x + dx*(smooth/100*speed);
-    if (speedIncreasing) {
-	speed = speed + 0.01;
-	if (speed > 250) speedIncreasing=false;
+    if (!stopping) {
+	if (speedIncreasing) {
+	    speed = speed + 0.01;
+	    if (speed > 250) speedIncreasing=false;
+	} else {
+	    speed = speed - 0.005;
+	    if (speed < 5) speedIncreasing=true;
+	    
+	}
     } else {
-	speed = speed - 0.005;
-	if (speed < 5) speedIncreasing=true;
-	
+	speed = speed*0.95;
     }
+    
     b.css('top',y);
     b.css('left',x);
 
@@ -62,6 +68,11 @@ function bounce() {
     dy=Math.sin(angle)*Math.sqrt(2);
     dx=Math.cos(angle)*Math.sqrt(2);
     axy=dy;adx=dx;
+    if (stopping && speed <= 0.1) {//stop
+	keep_going=false;
+	speed_increasing=true;
+	stopping=false;
+    }
     if (keep_going) {setTimeout(function() {bounce()}, smooth)}
 }
 
@@ -88,7 +99,7 @@ $('#startBouncing').click(function() {
 $('#stopBouncing').click(function() {
     $('#startBouncing').css('background','none');
     $(this).css('background','lightslategrey');
-    speedIncreasing=false;
+    stopping=true
     decayToZero();
 })
 
@@ -124,12 +135,7 @@ function decayBurst(){
 }
 
 function decayToZero(){
-    speed = speed*0.95;
-    if (speed > 0.01) setTimeout(decayBurst,50);
-    else {
-	keep_going = false;
-	speedIncreasing=true;
-    }
+    
 }
 
 function startBurst() {
