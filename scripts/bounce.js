@@ -15,23 +15,21 @@ function bounce() {
     b.css('left',x);
     
     if (b.position().top + b.height() > window.innerHeight() && dy > 0) { // $('body').height()
-	dy=-1 * dy;
 	angle=-1*angle;
     }
     if (b.position().top < 0 && dy < 0) {
-	dy=-1 * dy;
 	angle=-1*angle;
     }
 
     if (b.position().left < 0 && dx < 0) {
-	dx=-1 * dx;
 	angle=Math.PI-angle;
     }
     if (b.position().left + b.width() >  window.innerWidth()&& dx > 0) { // $('body').width()
-	dx=-1 * dx;
 	angle=Math.PI-angle;
     }
-
+    dy=Math.sin(angle)*Math.sqrt(2);
+    dx=Math.cos(angle)*Math.sqrt(2);
+    axy=dy;adx=dx;
     if (keep_going) {setTimeout(function() {bounce()}, smooth)}
 }
 
