@@ -48,12 +48,18 @@ function bounce(top, left,dy,dx,smooth,speed) {
 function start_bouncing() {
     console.log("comence bouncing");
     b.show()
-    bounce(0,0,1,1,.1,1);
+    if (keep_going)
+	bounce(0,0,1,1,.1,1);
+    else {
+	keep_going = true;
+	bounce(b.position().top,
+	       b.position().left,
+	       1,1,.1,1);
+    }
 }
 $('#startBouncing').click(function() {
     $(this).css('background','darkseagreen');
     start_bouncing();
-    keep_going = true;
 })
 
 $('#stopBouncing').click(function() {
