@@ -30,7 +30,7 @@ async function bounce(top, right) {
     right = right + 1;
     top = top + 1;
     b.css('right',right);
-    b.css('left',top);
+    b.css('top',top);
     console.log("top"+top);
     console.log("right"+right);
     setTimeout(function() {bounce(top,right)}, 100);
