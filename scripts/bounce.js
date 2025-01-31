@@ -25,11 +25,11 @@ function bounce() {
 
     if (b.position().left < 0 && dx < 0) {
 	dx=-1 * dx;
-	angle=2*Math.PI-angle;
+	angle=Math.PI-angle;
     }
     if (b.position().left + b.width() > $('body').width() && dx > 0) {
 	dx=-1 * dx;
-	angle=2*Math.PI-angle;
+	angle=Math.PI-angle;
     }
 
     if (keep_going) {setTimeout(function() {bounce()}, smooth)}
