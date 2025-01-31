@@ -40,11 +40,11 @@ function bounce() {
     b.css('top',y);
     b.css('left',x);
     
-    if (b.position().top + b.height() > window.innerHeight) {dy=-1}
+    if (b.position().top + b.height() > $('body').height()) {dy=-1}
     if (b.position().top < 0) {dy=1}
 
     if (b.position().left < 0) {dx=1}
-    if (b.position().left + b.width() > window.innerWidth) {dx=-1}
+    if (b.position().left + b.width() > $('body').width()) {dx=-1}
 
     if (keep_going) {setTimeout(function() {bounce()}, smooth)}
 }
@@ -93,4 +93,4 @@ function startBurst() {
 
 $('#burst').click(startBurst);
 $('#burst').mousedown(function(){$(this).css('background','indianred')})
-$('#burst').mouseup(function(){$(this).css('background','note')})
+$('#burst').mouseup(function(){$(this).css('background','none')})
