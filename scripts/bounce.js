@@ -67,11 +67,15 @@ $('#stopBouncing').click(function() {
     speedIncreasing=true;
 })
 
-
-$('#turnBouncer').click(function() {
-    angle += Math.random()*Math.PI/2 - Math.PI/4;
+function randomTurn(x) {
+    angle += Math.random()*Math.PI/2*x - Math.PI/4*x;
     dy=Math.sin(angle)*Math.sqrt(2);
     dx=Math.cos(angle)*Math.sqrt(2);
+}
+$('#turnBouncer').click(function() {
+    randomTurn(1);
+    old_speed=speed*.8;
+    decayBurst();
 })
 $('#turnBouncer').mousedown(function(){$(this).css('background','indianred')})
 $('#turnBouncer').mouseup(function(){$(this).css('background','none')})
@@ -80,18 +84,19 @@ $('#turnBouncer').mouseup(function(){$(this).css('background','none')})
 let old_speed,burst,max_burst;
 function growBurst(){
     burst = burst*2;
-    speed = old_speed + burst
-    if (speed < max_burst) setTimeout(growBurst,10)
-    else decayBurst()
+    speed = old_speed + burst;
+    if (speed < max_burst) setTimeout(growBurst,10);
+    else decayBurst();
 }
 function decayBurst(){
     burst = burst *.95;
-    speed = old_speed + burst
-    if (speed > old_speed * 1.1) setTimeout(decayBurst,50)
+    speed = old_speed + burst;
+    if (speed > old_speed * 1.1) setTimeout(decayBurst,50);
     else console.log("done: speed="+speed+"; burst="+burst+"; max_burst="+max_burst);
 }
 
 function startBurst() {
+    randomTurn(.5);
     old_speed=speed;
     max_burst=speed*3;
     burst=1;
