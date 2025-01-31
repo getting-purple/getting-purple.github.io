@@ -29,13 +29,13 @@ let keep_going=true;
 let b = $('#bouncer');
 let y=0; let x=0;
 let dy=1;  let dx=1;
-let smooth=50;
+let smooth=10;
 const START_SPEED=1;
 let speed=START_SPEED;
 function bounce() {
     y = y + dy*(smooth/100*speed);
     x = x + dx*(smooth/100*speed);
-    speed = speed + 0.001
+    speed = speed + 0.01
     
     b.css('top',y);
     b.css('left',x);
@@ -64,6 +64,6 @@ $('#startBouncing').click(function() {
 
 $('#stopBouncing').click(function() {
     $('#startBouncing').css('background','none');
-    $(this).css('background','lightslategrey');
+    $(this).css('background','lightcoral');
     keep_going = false;
 })
