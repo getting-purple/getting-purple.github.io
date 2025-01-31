@@ -5,7 +5,7 @@ let dy=1;  let dx=1;
 let smooth=10;
 const START_SPEED=1;
 let speed=START_SPEED;
-let angle;
+let angle,ady,adx;
 function bounce() {
     y = y + dy*(smooth/100*speed);
     x = x + dx*(smooth/100*speed);
@@ -32,6 +32,7 @@ function start_bouncing() {
 	angle = Math.random() * 2 * Math.PI;
 	dy=Math.sin(angle)*Math.sqrt(2);
 	dx=Math.cos(angle)*Math.sqrt(2);
+	axy=dy;adx=dx;
 	bounce();
     }
 }
@@ -51,6 +52,12 @@ $('#stopBouncing').click(function() {
 
 $('#turnBouncer').click(function() {
     angle += Math.random()*Math.PI/2 - Math.PI/4;
+    if (Math.sign(dx)!=Math.sign(adx) && Math.sign(dy)!=Math.sign(ady))
+	angle -= Math.PI
+    else if (Math.sign(dx)!=Math.sign(adx))
+	angle += Math.PI/2
+    else if (Math.sign(dy)!=Math.sign(ady))
+        angle -= Math.PI/2
     dy=Math.sin(angle)*Math.sqrt(2)*Math.sign(dy);
     dx=Math.cos(angle)*Math.sqrt(2)*Math.sign(dx);    
 })
