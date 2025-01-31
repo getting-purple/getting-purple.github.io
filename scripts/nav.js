@@ -70,9 +70,7 @@ $('#stopBouncing').click(function() {
 
 
 
-let old_speed,burst;
-let max_burst=500;
-
+let old_speed,burst,max_burst;
 function growBurst(){
     burst = burst*2;
     speed = old_speed + burst
@@ -87,6 +85,7 @@ function decayBurst(){
 
 function startBurst() {
     old_speed=speed;
+    max_burst=speed*3;
     burst=1
     growBurst()
 }
