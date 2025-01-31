@@ -7,6 +7,19 @@ const START_SPEED=1;
 let speed=START_SPEED;
 let angle,ady,adx;
 let speedIncreasing=true;
+let spinSpeed=0;
+
+function spin() {
+    if (spinSpeed > 3) {
+	rotationAngle = (rotationAngle + spinSpeed) % 360;
+	b.css("transform", "rotate(" + rotationAngle + "deg)");
+	spinSpeed = spinSpeed * .99;
+	setTimout(function() {
+	}, 10)
+    }
+}
+
+
 function bounce() {
     y = y + dy*(smooth/100*speed);
     x = x + dx*(smooth/100*speed);
@@ -20,19 +33,29 @@ function bounce() {
     }
     b.css('top',y);
     b.css('left',x);
+
     
     if (b.position().top + b.height() > window.innerHeight && dy > 0) { // $('body').height()
 	angle=-1*angle;
+	spinSpeed=speed * Math.sin(angle);
+	spin();
+	
     }
     if (b.position().top < 0 && dy < 0) {
 	angle=-1*angle;
+	spinSpeed=speed * Math.cos(angle);
+	spin();
     }
 
     if (b.position().left < 0 && dx < 0) {
 	angle=Math.PI-angle;
+	spinSpeed=speed * Math.sin(angle) * -1;
+	spin();
     }
     if (b.position().left + b.width() >  window.innerWidth && dx > 0) { // $('body').width()
 	angle=Math.PI-angle;
+	spinSpeed=speed * Math.cos(angle) * -1;
+	spin();
     }
     dy=Math.sin(angle)*Math.sqrt(2);
     dx=Math.cos(angle)*Math.sqrt(2);
