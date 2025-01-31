@@ -14,7 +14,7 @@ let spinDecay=0.99
 
 function spin() {
     if (Math.abs(spinSpeed) > spinThresh) {
-	rotationAngle = (rotationAngle + spinSpeed) % 360;
+	rotationAngle = (rotationAngle + spinSpeed*0.5) % 360;
 	b.css("transform", "rotate(" + rotationAngle + "deg)");
 	spinSpeed = spinSpeed * spinDecay;
 	setTimeout(spin, 10)
