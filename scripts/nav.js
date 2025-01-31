@@ -26,12 +26,14 @@ $('a').attr('target', function() {
 })
 
 let b = $('#bouncer')
-function bounce(top, right,dy,dx) {
-    right = right + dx;
-    top = top + dy;
-    b.css('right',right);
+function bounce(top, left,dy,dx,smooth,speed) {
+    top = top + dy*(smooth*speed);
+    left = left + dx*(smooth*speed);
+    speed = speed * 1.1
+    
     b.css('top',top);
-
+    b.css('left',left);
+    
     if (b.position().top + b.height() > window.innerHeight) {dy=-1}
     if (b.position().top < 0) {dy=1}
 
@@ -39,12 +41,12 @@ function bounce(top, right,dy,dx) {
     if (b.position().left + b.width() > window.innerWidth) {dx=-1}
 
     console.log("  top: "+top);
-    console.log("right: "+right);
-    setTimeout(function() {bounce(top,right,dy,dx)}, 100);
+    console.log("left: "+left);
+    setTimeout(function() {bounce(top,left,dy,dx,smooth,speed)}, 100*smooth);
 }
 function start_bouncing() {
     console.log("comence bouncing");
     b.show()
-    bounce(0,0,1,1);
+    bounce(0,0,1,1,.1,1));
 }
 setTimeout(start_bouncing, 5 * 60 * 1000);
