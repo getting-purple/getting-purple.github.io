@@ -61,9 +61,34 @@ $('#startBouncing').click(function() {
     $(this).css('background','darkseagreen');
     start_bouncing();
 })
-
+ 
 $('#stopBouncing').click(function() {
     $('#startBouncing').css('background','none');
     $(this).css('background','lightcoral');
     keep_going = false;
 })
+
+
+
+let old_speed,burst;
+let max_burst=500;
+
+function growBurst(){
+    burst = burst*2;
+    speed = old_speed + burst
+    if (speed < max_burst) setTimeout(growBurst,10)
+    else decayBurst()
+}
+function decayBurst(){
+    burst = burst *.95;
+    speed = old_speed + burst
+    if (speed > old_speed + 1) setTimeout(decayBurst,50)
+}
+
+function burst() {
+    old_speed=speed;
+    burst=1
+    growBurst()
+}
+
+$('#burst').click(burst);
