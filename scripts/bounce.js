@@ -91,9 +91,11 @@ function start_bouncing() {
 }
 
 $('#startBouncing').click(function() {
-    $('#stopBouncing').css('background','none');
-    $(this).css('background','gold');
-    start_bouncing();
+    if (!keep_going) {
+	$('#stopBouncing').css('background','none');
+	$(this).css('background','gold');
+	start_bouncing();
+    }
 })
 
 $('#stopBouncing').click(function() {
