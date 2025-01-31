@@ -8,6 +8,7 @@ let speed=START_SPEED;
 let angle,ady,adx;
 let speedIncreasing=true;
 let spinSpeed=0;
+let rotationAngle=0;
 
 function spin() {
     if (spinSpeed > 3) {
