@@ -54,10 +54,10 @@ function start_bouncing() {
 	b.show()
 	keep_going=true;
 	speed=START_SPEED;
-	let angle = Math.random() * 2 * Math.PI);
-    dy=Math.sin(angle)*Math.sqrt(2);
-    dx=Math.cos(angle)*Math.sqrt(2);
-    bounce();
+	let angle = Math.random() * 2 * Math.PI;
+	dy=Math.sin(angle)*Math.sqrt(2);
+	dx=Math.cos(angle)*Math.sqrt(2);
+	bounce();
 }
 
 $('#startBouncing').click(function() {
