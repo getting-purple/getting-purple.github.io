@@ -85,10 +85,10 @@ function decayBurst(){
     if (speed > old_speed + 1) setTimeout(decayBurst,50)
 }
 
-function burst() {
+function startBurst() {
     old_speed=speed;
     burst=1
     growBurst()
 }
 
-$('#burst').click(burst);
+$('#burst').click(startBurst);
