@@ -97,10 +97,11 @@ $('#startBouncing').click(function() {
 })
 
 $('#stopBouncing').click(function() {
-    $('#startBouncing').css('background','none');
-    $(this).css('background','lightslategrey');
-    stopping=true
-    decayToZero();
+    if (keep_going) {
+	$('#startBouncing').css('background','none');
+	$(this).css('background','lightslategrey');
+	stopping=true
+    }
 })
 
 function randomTurn(w) {
