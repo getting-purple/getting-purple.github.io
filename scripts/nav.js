@@ -2,7 +2,8 @@ $('.navI').click(function() {
     var mine = this.id.split('~')[1];
     $('.post').hide()
     $('#'+mine).show()
-
+    $('#'+mine).css('transform','rotate(0deg)')
+    
     $('.navI').css('background','none')
     if (this.id.includes('button~')) {    
         $(this).css('background','darkseagreen')
@@ -13,6 +14,7 @@ $('.navI').click(function() {
 
 $('#viewAll').click(function() {
     $('.post').show()
+    $('.post').css('transform','rotate(0deg)')
     $(this).css('background','darkseagreen')
 })
 $('#hideAll').click(function() {
