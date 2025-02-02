@@ -192,6 +192,9 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
 	    if (destroy_mode) $(this).css('background','red')
 	    else $(this).css('background','none')
 	});
+	$('#clearAll') {
+	    running_children = [];
+	}
     }
     else { //code for all the other objects only
 	$('#destroy_mode').click(function() {
