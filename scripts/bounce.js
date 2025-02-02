@@ -1,7 +1,8 @@
 const MS_PER_FRAME=33.33333;
 
 run_bouncing_ball('#bouncer');
-function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, keep_going=false, , START_SPEED=5, spinThresh=0.01, spinDecay=0.99) {
+function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, spinThresh=0.01, spinDecay=0.99) {
+    let keep_going=false;
     let b = $(jq_string);
     let y=0; let x=0;
     let dy=1;  let dx=1;
@@ -36,24 +37,24 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, keep_going=false, , S
 	
 	if (b.position().top + b.height() > window.innerHeight && dy > 0) { // $('body').height()
 	    angle=-1*angle;
-	    spinSpeed=Math.sqrt(speed) * Math.cos(angle);
+	    spinSpeed+=Math.sqrt(speed) * Math.cos(angle);
 	    spin();
 	    
 	}
 	if (b.position().top < 0 && dy < 0) {
 	    angle=-1*angle;
-	    spinSpeed=Math.sqrt(speed) * Math.cos(angle) * -1;
+	    spinSpeed+=Math.sqrt(speed) * Math.cos(angle) * -1;
 	    spin();
 	}
 
 	if (b.position().left < 0 && dx < 0) {
 	    angle=Math.PI-angle;
-	    spinSpeed=Math.sqrt(speed) * Math.sin(angle);
+	    spinSpeed+=Math.sqrt(speed) * Math.sin(angle);
 	    spin();
 	}
 	if (b.position().left + b.width() >  window.innerWidth && dx > 0) { // $('body').width()
 	    angle=Math.PI-angle;
-	    spinSpeed=Math.sqrt(speed) * Math.sin(angle) * -1;
+	    spinSpeed+=Math.sqrt(speed) * Math.sin(angle) * -1;
 	    spin();
 	}
 	dy=Math.sin(angle)*Math.sqrt(2);
@@ -73,7 +74,7 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, keep_going=false, , S
 			if (checkColiding(b,$(this))) {
 			    mass_ratio =  ($(this).height() * $(this).width()) /  (b.height() * b.width())
 			    console.log('starting new child on '+this+"with mass ratio"+mass_ratio)
-			    run_bouncing_ball(this, MS_PER_FRAME * mass_ratio);
+			    run_bouncing_ball(this, MS_PER_FRAME * mass_ratio, 1);
 			    running_children.concat(this)
 			}
 		    }
