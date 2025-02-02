@@ -20,6 +20,7 @@ body {
     border:3px solid black;
     margin: 3%;
     width: 66%;
+    position: relative;
 }
 button {
     float:right;
