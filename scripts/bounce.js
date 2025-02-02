@@ -74,7 +74,7 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
 			if (checkColiding(b,$(this))) {
 			    mass_ratio =  ($(this).height() * $(this).width()) /  (b.height() * b.width())
 			    console.log('starting new child on '+this+"with mass ratio"+mass_ratio)
-			    run_bouncing_ball(this, MS_PER_FRAME * 2, 1/mass_ratio, angle);
+			    run_bouncing_ball(this, MS_PER_FRAME * 2, 400/mass_ratio, angle);
 			    running_children = running_children.concat(this)
 			}
 		    }
