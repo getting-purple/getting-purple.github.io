@@ -7,19 +7,21 @@
   </head>
 
   <body>
-    <table id="index"style="position: fixed;right: 0px"><tr><td><h2>Index</h2></td></tr>
-      <tr>
-	<td> <button id="viewAll" class="navI" style="background:darkseagreen">View All</button></td>
-	<td> <button id="hideAll" class="navI" style="float:left">Clear</button></td>
-      </tr>      
-      {% for post in site.posts %}
-      <tr>
-	<td><button id="button~{{ post.real_id }}" class="navI">{{ post.date | date_to_string}}</button></td>
+    <div id="index"style="position: fixed;right: 0px">
+      <table><tr><td><h2>Index</h2></td></tr>
+	<tr>
+	  <td> <button id="viewAll" class="navI" style="background:darkseagreen">View All</button></td>
+	  <td> <button id="hideAll" class="navI" style="float:left">Clear</button></td>
+	</tr>      
+	{% for post in site.posts %}
+	<tr>
+	  <td><button id="button~{{ post.real_id }}" class="navI">{{ post.date | date_to_string}}</button></td>
 	<td>{{ post.title | replace: "Fuck", "F**k" }}</td>
-      </tr>
-      {% endfor %}      
-    </table>
-    {% include bounce_game.html %}
+	</tr>
+	{% endfor %}      
+      </table>
+      {% include bounce_game.html %}
+    </div>
     
     <div style="margin-left: .4%">
       <h1>Getting Purple</h1>
