@@ -67,7 +67,7 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
 	if (jq_string == '#bouncer') {
 	    if (destroy_mode) {
 		$('.post').each(function() {
-		    if (! running_children.contains(this) ) {	    
+		    if (! running_children.includes(this) ) {	    
 			if (checkColiding(b,$(this))) {
 			    run_bouncing_ball(this);
 			    running_children.concat(this)
