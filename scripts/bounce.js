@@ -139,6 +139,7 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
 
     // Collisions
     function checkColiding(ball,region) {
+	if (ball.css('display') == 'none' || region.css('display') == 'none') return false;
 	return 	(ball.offset().left + ball.width() > region.offset().left &&
 		 ball.offset().left < region.offset().left + region.width()
 		) && (
