@@ -71,9 +71,11 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
 		    }
 		});
 	    }
+	    if (keep_going) {setTimeout(function() {bounce()}, smooth)};
 	}
-	
-	if (keep_going) {setTimeout(function() {bounce()}, smooth)};
+	else {
+	    if (keep_going && destroy_mode) {setTimeout(function() {bounce()}, smooth)};
+	}
     }
 
     function start_bouncing() {
@@ -149,7 +151,7 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
 	}
     })
     
-    if (jq_string == '#bouncer') {	    
+    if (jq_string == '#bouncer') { //code for the bouncing ball only
 	$('#startBouncing').click(function() {
 	    if (!keep_going) {
 		$('#stopBouncing').css('background','none');
@@ -178,7 +180,11 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
 	    else $(this).css('background','none')
 	});
     }
-    else {
+    else { //code for all the other objects only
+	$('#destroy_mode').click(function() {
+            destroy_mode = false
+        });
+	
 	// starting via collision!
 	console.log('rogue start! bounce on!')
         start_bouncing();
