@@ -1,4 +1,4 @@
-run_bouncing_Aball('#bouncer');
+run_bouncing_ball('#bouncer');
 function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SPEED=5, spinThresh=0.01, spinDecay=0.99) {
     let b = $(jq_string);
     let y=0; let x=0;
