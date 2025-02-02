@@ -1,5 +1,7 @@
+const MS_PER_FRAME=33.33333;
+
 run_bouncing_ball('#bouncer');
-function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SPEED=5, spinThresh=0.01, spinDecay=0.99) {
+function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, keep_going=false, , START_SPEED=5, spinThresh=0.01, spinDecay=0.99) {
     let b = $(jq_string);
     let y=0; let x=0;
     let dy=1;  let dx=1;
@@ -69,7 +71,9 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
 		$('.post').each(function() {
 		    if (! running_children.includes(this) ) {	    
 			if (checkColiding(b,$(this))) {
-			    run_bouncing_ball(this);
+			    mass_ratio =  ($(this).height() * $(this).width()) /  (b.height() * b.width())
+			    console.log('starting new child on '+this+"with mass ratio"+mass_ratio)
+			    run_bouncing_ball(this, MS_PER_FRAME * mass_ratio);
 			    running_children.concat(this)
 			}
 		    }
