@@ -1,4 +1,4 @@
-run_bouncing_ball('#bouncer');
+run_bouncing_Aball('#bouncer');
 function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SPEED=5, spinThresh=0.01, spinDecay=0.99) {
     let b = $(jq_string);
     let y=0; let x=0;
@@ -9,6 +9,7 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
     let spinSpeed=0;
     let rotationAngle=0;
     let stopping=false;
+    let destroy_mode=false;
     
     function bounce() {
 	y = y + dy*(smooth/100*speed);
@@ -63,11 +64,13 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
 
 	// Colisions
 	if (jq_string == '#bouncer') {
-	    $('.post').each(function() {
-		console.log(checkColiding(b,$(this)))
-		run_bouncing_ball(this);
-	    });
-	}
+	    if (destroy_mode) {
+		$('.post').each(function() {
+		    if (checkColiding(b,$(this))) {
+			run_bouncing_ball(this);
+		    }
+		});
+	    }
 	
 	if (keep_going) {setTimeout(function() {bounce()}, smooth)}
     }
@@ -167,6 +170,12 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
 	$('#burst').click(startBurst);
 	$('#burst').mousedown(function(){$(this).css('background','darkseagreen')})
 	$('#burst').mouseup(function(){$(this).css('background','none')})
+
+	$('#destroy_mode').click(function() {
+	    destroy_mode = !destroy_mode
+	    if (destroy_mode) $(this).css('background','red')
+	    else $(this).css('background','none')
+	}
     }
     else {
 	// starting via collision!
