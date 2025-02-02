@@ -71,8 +71,9 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
 		    }
 		});
 	    }
+	}
 	
-	if (keep_going) {setTimeout(function() {bounce()}, smooth)}
+	if (keep_going) {setTimeout(function() {bounce()}, smooth)};
     }
 
     function start_bouncing() {
@@ -138,9 +139,17 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
 			ball.offset().top < region.offset().top + region.height() )
     }
 
-    if (jq_string == '#bouncer') {
-	
-	// Buttons
+
+    // Buttons
+    $('#stopBouncing').click(function() {
+	if (keep_going) {
+	    $('#startBouncing').css('background','none');
+	    $(this).css('background','lightslategrey');
+	    stopping=true
+	}
+    })
+    
+    if (jq_string == '#bouncer') {	    
 	$('#startBouncing').click(function() {
 	    if (!keep_going) {
 		$('#stopBouncing').css('background','none');
@@ -149,14 +158,6 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
 	    }
 	})
 	
-	$('#stopBouncing').click(function() {
-	    if (keep_going) {
-		$('#startBouncing').css('background','none');
-		$(this).css('background','lightslategrey');
-		stopping=true
-	    }
-	})
-
 	// The button on the left ____ (slow down and reverse bouncer)
 	$('#turnBouncer').click(function() {
 	    angle += Math.PI;
