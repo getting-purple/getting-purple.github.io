@@ -10,6 +10,7 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
     let rotationAngle=0;
     let stopping=false;
     let destroy_mode=false;
+    let running_children = [];
     
     function bounce() {
 	y = y + dy*(smooth/100*speed);
@@ -66,11 +67,15 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
 	if (jq_string == '#bouncer') {
 	    if (destroy_mode) {
 		$('.post').each(function() {
-		    if (checkColiding(b,$(this))) {
-			run_bouncing_ball(this);
+		    if (! running_children.contains(this) ) {	    
+			if (checkColiding(b,$(this))) {
+			    run_bouncing_ball(this);
+			    running_children.concat(this)
+			}
 		    }
 		});
 	    }
+	    
 	    if (keep_going) {setTimeout(function() {bounce()}, smooth)};
 	}
 	else {
@@ -187,6 +192,7 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
 	
 	// starting via collision!
 	console.log('rogue start! bounce on!')
+	console.log(jq_string);
         start_bouncing();
     }
 }
