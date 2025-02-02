@@ -60,6 +60,15 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
 	    speed_increasing=true;
 	    stopping=false;
 	}
+
+	// Colisions
+	if (jq_string == '#bouncer') {
+	    $('.post').each(function() {
+		console.log(checkColiding(b,$(this)))
+		run_bouncing_ball(this);
+	    });
+	}
+	
 	if (keep_going) {setTimeout(function() {bounce()}, smooth)}
     }
 
@@ -93,6 +102,7 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
 	dx=Math.cos(angle)*Math.sqrt(2);
     }
 
+    
     let old_speed,burst,max_burst;
     function growBurst(){
 	burst = burst*2;
@@ -116,7 +126,18 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
 	growBurst();
     }
 
+    // Collisions
+    function checkColiding(ball,region) {
+	return 	(ball.offset().left + ball.width() > region.offset().left &&
+		 ball.offset().left < region.offset().left + region.width()
+		) && (
+		    ball.offset().top + ball.height() > region.offset().top &&
+			ball.offset().top < region.offset().top + region.height() )
+    }
+
     if (jq_string == '#bouncer') {
+	
+	// Buttons
 	$('#startBouncing').click(function() {
 	    if (!keep_going) {
 		$('#stopBouncing').css('background','none');
@@ -124,7 +145,7 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
 		start_bouncing();
 	    }
 	})
-
+	
 	$('#stopBouncing').click(function() {
 	    if (keep_going) {
 		$('#startBouncing').css('background','none');
@@ -133,18 +154,24 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
 	    }
 	})
 
+	// The button on the left ____ (slow down and reverse bouncer)
 	$('#turnBouncer').click(function() {
 	    angle += Math.PI;
 	    randomTurn(Math.PI/3);
 	    old_speed=speed*.8;
-	    decayBurst();
-	})
+	    decayBurst();                   })
 	$('#turnBouncer').mousedown(function(){$(this).css('background','lightcoral')})
 	$('#turnBouncer').mouseup(function(){$(this).css('background','none')})
 
-	
+	// The button on the right ----- (push along bouncer)
 	$('#burst').click(startBurst);
 	$('#burst').mousedown(function(){$(this).css('background','darkseagreen')})
 	$('#burst').mouseup(function(){$(this).css('background','none')})
+    }
+    else {
+	// starting via collision!
+	console.log('rogue start! bounce on!')
+	
+        start_bouncing();
     }
 }
