@@ -165,6 +165,7 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
     
     if (jq_string == '#bouncer') { //code for the bouncing ball only
 	$('#startBouncing').click(function() {
+	    running_children = [];
 	    if (!keep_going) {
 		$('#stopBouncing').css('background','none');
 		$(this).css('background','gold');
