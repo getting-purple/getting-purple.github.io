@@ -1,13 +1,13 @@
-const MS_PER_FRAME=33.33333;
+const MS_PER_FRAME=33.33333;A
 
 run_bouncing_ball('#bouncer');
-function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, spinThresh=0.01, spinDecay=0.99) {
+function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle='none', spinThresh=0.01, spinDecay=0.99) {
     let keep_going=false;
     let b = $(jq_string);
     let y=0; let x=0;
     let dy=1;  let dx=1;
     let speed=START_SPEED;
-    let angle,ady,adx;
+    let ady,adx;
     let speedIncreasing=true;
     let spinSpeed=0;
     let rotationAngle=0;
@@ -74,7 +74,7 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, spinTh
 			if (checkColiding(b,$(this))) {
 			    mass_ratio =  ($(this).height() * $(this).width()) /  (b.height() * b.width())
 			    console.log('starting new child on '+this+"with mass ratio"+mass_ratio)
-			    run_bouncing_ball(this, MS_PER_FRAME * mass_ratio, 1);
+			    run_bouncing_ball(this, MS_PER_FRAME * mass_ratio, 1, angle);
 			    running_children = running_children.concat(this)
 			}
 		    }
@@ -94,7 +94,8 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, spinTh
 	    b.show()
 	    keep_going=true;
 	    speed=START_SPEED;
-	    angle = Math.random() * 2 * Math.PI;
+	    if (angle == 'none')
+		angle = Math.random() * 2 * Math.PI;
 	    dy=Math.sin(angle)*Math.sqrt(2);
 	    dx=Math.cos(angle)*Math.sqrt(2);
 	    axy=dy;adx=dx;
