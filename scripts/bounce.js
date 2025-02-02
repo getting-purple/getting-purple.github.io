@@ -1,4 +1,4 @@
-const MS_PER_FRAME=33.33333;A
+const MS_PER_FRAME=33.33333;
 
 run_bouncing_ball('#bouncer');
 function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle='none', spinThresh=0.01, spinDecay=0.99) {
