@@ -166,7 +166,7 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
 	    decayBurst();                   })
 	$('#turnBouncer').mousedown(function(){$(this).css('background','lightcoral')})
 	$('#turnBouncer').mouseup(function(){$(this).css('background','none')})
-
+	
 	// The button on the right ----- (push along bouncer)
 	$('#burst').click(startBurst);
 	$('#burst').mousedown(function(){$(this).css('background','darkseagreen')})
@@ -176,12 +176,11 @@ function run_bouncing_ball(jq_string, keep_going=false, smooth=33.3333, START_SP
 	    destroy_mode = !destroy_mode
 	    if (destroy_mode) $(this).css('background','red')
 	    else $(this).css('background','none')
-	}
+	});
     }
     else {
 	// starting via collision!
 	console.log('rogue start! bounce on!')
-	
         start_bouncing();
     }
 }
