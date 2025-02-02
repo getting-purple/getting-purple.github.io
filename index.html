@@ -45,22 +45,9 @@
 	<td><button id="button~{{ post.real_id }}" class="navI">{{ post.date | date_to_string}}</button></td>
 	<td>{{ post.title | replace: "Fuck", "F**k" }}</td>
       </tr>
-      {% endfor %}
-      <tr>
-	<td> <button id="startBouncing" class="bounceButts">Bounce</button></td>
-	<td> <button id="stopBouncing" class="bounceButts" style="float:left">Stop Bouncing</button></td>
-      </tr>
-      <tr>
-	<td> <button id="turnBouncer" class="bounceButts">______<button></td>
-	<td> <button id="burst" class="bounceButts" style="float:left">¯¯¯¯¯¯¯¯¯¯¯¯¯</button></td>
-      </tr>
-      <tr>
-	<td><button id='destroy_mode' class='bounceButts'>Destroy Mode</button>
-	</td>
-	<td></td>
-      </tr>
-      
+      {% endfor %}      
     </table>
+    {% include bounce_game.html %}
     
     <div style="margin-left: .4%">
       <h1>Getting Purple</h1>
