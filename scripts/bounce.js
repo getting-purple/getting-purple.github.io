@@ -70,12 +70,12 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, spinTh
 	if (jq_string == '#bouncer') {
 	    if (destroy_mode) {
 		$('.post').each(function() {
-		    if (! running_children.includes(this) ) {	    
+		    if (! running_children.includes(this) ) {
 			if (checkColiding(b,$(this))) {
 			    mass_ratio =  ($(this).height() * $(this).width()) /  (b.height() * b.width())
 			    console.log('starting new child on '+this+"with mass ratio"+mass_ratio)
 			    run_bouncing_ball(this, MS_PER_FRAME * mass_ratio, 1);
-			    running_children.concat(this)
+			    running_children = running_children.concat(this)
 			}
 		    }
 		});
