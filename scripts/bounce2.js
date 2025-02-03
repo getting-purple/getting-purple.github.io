@@ -97,7 +97,7 @@ function animate() {
 	o.y = o.y + o.dy*(MS_PER_FRAME/100*o.speed);
 	o.x = o.x + o.dx*(MS_PER_FRAME/100*o.speed);
 
-	if (gravity) {
+	if (gravity && o.b.position().top + o.b.height() <= window.innerHeight) {
 	    o.gravSpeed += Math.max(1,Math.abs(o.y - old_y));
 	    o.y = o.y + (MS_PER_FRAME/100 * o.gravSpeed);
 	}
