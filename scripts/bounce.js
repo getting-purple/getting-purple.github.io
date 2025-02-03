@@ -91,7 +91,7 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
 	if (jq_string == '#bouncer') {
 	    if (destroy_mode) {
 		$('body').children().each(function() {
-		    if (!overlaping.includes(this.id)) {
+		    if (this.id != 'bouncer' && !overlaping.includes(this.id)) {
 			if (checkColiding(b,$(this))) {
 			    mass_ratio =  ($(this).height() * $(this).width()) /  (b.height() * b.width())
 			    console.log('starting new child on '+this+"with mass ratio"+mass_ratio)
