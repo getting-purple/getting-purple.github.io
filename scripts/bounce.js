@@ -87,11 +87,11 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
 	    }
 	    
 	    if (keep_going) {setTimeout(function() {bounce()}, smooth)}
-	    else {console.log('stopping bouncing for '+jq_string}
+	    else {console.log('stopping bouncing for '+jq_string)}
 	}
 	else {
 	    if (keep_going && destroy_mode) {setTimeout(function() {bounce()}, smooth)}
-	    else {console.log('stopping bouncing for '+jq_string}
+	    else {console.log('stopping bouncing for '+jq_string)}
 	}
     }
 
