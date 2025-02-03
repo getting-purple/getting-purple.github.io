@@ -10,7 +10,7 @@ objects_jq.each(function() {
 	speed:0,
 	angle:0,
 	spinSpeed:0,
-	spinDecay:0.99
+	spinDecay:0.99,
 	rotationAngle:0,
 	b:$(this),
 	speedIncreasing:true,
