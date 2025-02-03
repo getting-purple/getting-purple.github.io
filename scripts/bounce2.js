@@ -105,9 +105,11 @@ function animate() {
 	all_stopped = all_stopped && o.speed < 0.1
     }
     
-    
     if (keep_going && !all_stopped) {
-	setTimeout(animate, MS_PER_FRAME)}   
+	setTimeout(animate, MS_PER_FRAME)}
+    else {
+	keep_going = false
+    }
 }
 
 // Collisions
