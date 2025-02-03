@@ -30,7 +30,7 @@ function default_next_speed(speed,acceleration) {
 
 let keep_going=false;
 let destroy_mode=false;
-
+let all_stopped=true;
 
 function animate() {
     for (i in objects) {
@@ -63,12 +63,8 @@ function animate() {
 	}
 	
 	// controll speed
-	if (!o.stopping) {
-	    o.speed = o.next_speed(o.speed,o.acc)
-	} else {
-	    o.speed = o.speed*(Math.max(0.5,0.97-(o.speed/350)))
-	}
-	
+	o.speed = o.next_speed(o.speed,o.acc)
+
 	// calculate direction
 	o.dy=Math.sin(o.angle)*Math.sqrt(2);
 	o.dx=Math.cos(o.angle)*Math.sqrt(2);
@@ -106,9 +102,11 @@ function animate() {
 		}   
 	    }
 	}
+	all_stopped = all_stopped && o.speed < 0.1
     }
-
-    if (keep_going) {
+    
+    
+    if (keep_going && !all_stopped) {
 	setTimeout(animate, MS_PER_FRAME)}   
 }
 
@@ -154,7 +152,12 @@ $('#stopBouncing').click(function() {
 	$('#startBouncing').css('background','none');
 	$(this).css('background','lightslategrey');
 
-	for (i in objects) objects[i].stopping=true
+	for (i in objects) {
+	    o = objects[i]
+	    o..stopping=true;
+	    o.next_speed = function(speed,acc){return speed*(Math.max(0.5,0.97-(speed/350)))}
+
+	}
     }
 })
 $('#destroy_mode').click(function() {
