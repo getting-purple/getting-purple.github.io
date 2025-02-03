@@ -30,9 +30,8 @@ function default_next_speed(speed,acceleration) {
 
 let keep_going=false;
 let destroy_mode=false;
-let all_stopped=true;
-
 function animate() {
+    let all_stopped=true;
     for (i in objects) {
 	o = objects[i]
 
@@ -64,7 +63,8 @@ function animate() {
 	
 	// controll speed
 	o.speed = o.next_speed(o.speed,o.acc)
-
+	all_stopped = all_stopped && Maht.abs(o.speed) < 0.1
+	
 	// calculate direction
 	o.dy=Math.sin(o.angle)*Math.sqrt(2);
 	o.dx=Math.cos(o.angle)*Math.sqrt(2);
@@ -92,7 +92,7 @@ function animate() {
 		    o.speed=START_SPEED*100/mass_ratio
 		    o.angle += Math.sin(o2.angle)*Math.cos(o2.angle)
 		    o.spinSpeed+=Math.sqrt(o.speed) * Math.sin(o.angle) * Math.cos(o.angle);
-		    o.next_speed = function(speed, acc) {return speed - 0.01;}
+		    o.next_speed = function(speed, acc) {return Math.max(0,speed - 0.01);}
 		    
 		}
 	    }
@@ -102,7 +102,6 @@ function animate() {
 		}   
 	    }
 	}
-	all_stopped = all_stopped && o.speed < 0.1
     }
     
     if (keep_going && !all_stopped) {
@@ -157,7 +156,7 @@ $('#stopBouncing').click(function() {
 	for (i in objects) {
 	    o = objects[i]
 	    o.stopping=true;
-	    o.next_speed = function(speed,acc){return speed*(Math.max(0.5,0.97-(speed/350)))}
+	    o.next_speed = function(speed,acc){return Math.max(0,speed*(Math.max(0.5,0.97-(speed/350))))}
 
 	}
     }
