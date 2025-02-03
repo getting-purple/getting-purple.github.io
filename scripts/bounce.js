@@ -16,21 +16,26 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
     console.log('start new run with '+jq_string+'\nspeed='+speed+'\nangle='+angle)
     
     function bounce() {
+	//handle speed and direction
 	y = y + dy*(smooth/100*speed);
 	x = x + dx*(smooth/100*speed);
-	if (!stopping) {
-	    if (speedIncreasing) {
-		speed = speed + 0.01;
-		if (speed > 250) speedIncreasing=false;
+	if (jq_string == '#bouncer') {
+	    if (!stopping) {
+		if (speedIncreasing) {
+		    speed = speed + 0.01;
+		    if (speed > 250) speedIncreasing=false;
+		} else {
+		    speed = speed - 0.005;
+		    if (speed < 5) speedIncreasing=true;
+		    
+		}
 	    } else {
-		speed = speed - 0.005;
-		if (speed < 5) speedIncreasing=true;
-		
+		speed = speed*(Math.max(0.5,0.97-(speed/350)))
 	    }
 	} else {
-	    speed = speed*(Math.max(0.5,0.97-(speed/350)))
+	    speed = speed * 0.99999
+	    if (speed < 0.01) keep_going=false;
 	}
-	
 	b.css('top',y);
 	b.css('left',x);
 
@@ -81,10 +86,12 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
 		});
 	    }
 	    
-	    if (keep_going) {setTimeout(function() {bounce()}, smooth)};
+	    if (keep_going) {setTimeout(function() {bounce()}, smooth)}
+	    else {console.log('stopping bouncing for '+jq_string}
 	}
 	else {
-	    if (keep_going && destroy_mode) {setTimeout(function() {bounce()}, smooth)};
+	    if (keep_going && destroy_mode) {setTimeout(function() {bounce()}, smooth)}
+	    else {console.log('stopping bouncing for '+jq_string}
 	}
     }
 
