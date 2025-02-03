@@ -191,18 +191,18 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
 	})
 	
 	// The button on the left ____ (slow down and reverse bouncer)
-	$('#turnBouncer').click(function() {
+	$('#slowDown').click(function() {
 	    angle += Math.PI;
 	    randomTurn(Math.PI/3);
 	    old_speed=speed*.8;
 	    decayBurst();                   })
-	$('#turnBouncer').mousedown(function(){$(this).css('background','lightcoral')})
-	$('#turnBouncer').mouseup(function(){$(this).css('background','none')})
+	$('#slowDown').mousedown(function(){$(this).css('background','lightcoral')})
+	$('#slowDown').mouseup(function(){$(this).css('background','none')})
 	
 	// The button on the right ----- (push along bouncer)
-	$('#burst').click(startBurst);
-	$('#burst').mousedown(function(){$(this).css('background','darkseagreen')})
-	$('#burst').mouseup(function(){$(this).css('background','none')})
+	$('#speedUp').click(startBurst);
+	$('#speedUp').mousedown(function(){$(this).css('background','darkseagreen')})
+	$('#speedUp').mouseup(function(){$(this).css('background','none')})
 
 	$('#destroy_mode').click(function() {
 	    destroy_mode = !destroy_mode
