@@ -86,34 +86,30 @@ function animate() {
 	// }
 	
 	// Colisions
-	if (o.id == 'bouncer') {
-	    if (destroy_mode) {
-		for (i2 in objects) {
-		    o2=objects[i2];
-		    if (o2.id != o.id && !o.overlaping.includes(o2.id)) {
-			if (checkColiding(o.b,o2.b)) {
-			    mass_ratio =  (o2.b.height() * o2.b.width()) /  (o.b.height() * o.b.width())
-			    console.log('starting new child on '+this+"with mass ratio"+mass_ratio)
-			    o2.speed=START_SPEED*100/mass_ratio
-			    o2.spinSpeed+=Math.sqrt(o2.speed) * Math.sin(o2.angle) * Math.cos(o2.angle);
-			    o2.next_speed = function(speed, acc) {
-				return speed - 0.01;
-			    }
-			    ///
-			    // run_bouncing_ball(o2.b, MS_PER_FRAME * 2, speed * 100/mass_ratio, angle,true);
-			    // o.running_children = o.running_children.concat(this)
-			    // o.overlaping = o.overlaping.concat(this.id)
-			}
+	i2="bouncer"
+	o2=objects[i2];
+	if (destroy_mode && i != i2) {
+	    if (!o2.overlaping.includes(o.id)) {
+		if (checkColiding(o2.b,o.b)) {
+		    mass_ratio =  (o.b.height() * o.b.width()) /  (o2.b.height() * o2.b.width())
+		    console.log('starting new child on '+this+"with mass ratio"+mass_ratio)
+		    o.speed=START_SPEED*100/mass_ratio
+		    o.angle += Math.sin(o2.angle)*Math.cos(o2.angle)
+		    o.spinSpeed+=Math.sqrt(o.speed) * Math.sin(o.angle) * Math.cos(o.angle);
+		    o.next_speed = function(speed, acc) {
+			return speed - 0.01;
 		    }
-		    else {
-			if (! checkColiding(o.b,o2.b)) {
-			    o.overlaping.splice(o.overlaping.indexOf(o2.id),1)
-			}   
-		    }
+		    
 		}
+	    }
+	    else {
+		if (! checkColiding(o2.b,o.b)) {
+		    o2.overlaping.splice(o2.overlaping.indexOf(o.id),1)
+		}   
 	    }
 	}
     }
+
     if (keep_going) {
 	setTimeout(animate, MS_PER_FRAME)}   
 }
