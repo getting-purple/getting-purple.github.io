@@ -99,7 +99,7 @@ function animate() {
 
 	if (gravity) {
 	    o.y = o.y + (MS_PER_FRAME/100 * o.gravSpeed);
-	    o.gravSpeed += o.y - old_y
+	    o.gravSpeed += Math.abs(o.y - old_y);
 	}
 	
 	o.b.css('top',o.y);
