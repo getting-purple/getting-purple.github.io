@@ -203,9 +203,11 @@ $('#destroy_mode').click(function() {
     else $(this).css('background','none')
 });
 $('#gravity').click(function() {
-    gravity=!gravity
-    if (gravity) $(this).css('background','mediumaquamarine')
-    else $(this).css('background','none')
+    if (destroy_mode || gravity) {
+	gravity=!gravity
+	if (gravity) $(this).css('background','mediumaquamarine')
+	else $(this).css('background','none')
+    }
 });
 
 $('#SUPER_destroy_mode').click(function() {
