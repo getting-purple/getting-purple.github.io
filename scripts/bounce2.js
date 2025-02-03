@@ -102,7 +102,7 @@ function animate() {
 		if(o.b.position().top + o.b.height() <= window.innerHeight) {
 		    o.gravSpeed += Math.max(1,Math.abs(o.y - old_y));
 		    o.y = o.y + (MS_PER_FRAME/100 * o.gravSpeed);
-		}
+		} else {o.gravSpeed=0;
 	    }else {
 		o.gravSpeed += Math.max(1,Math.abs(o.y - old_y));
 		o.y = o.y + (MS_PER_FRAME/100 * o.gravSpeed);
