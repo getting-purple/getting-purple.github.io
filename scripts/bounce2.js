@@ -58,7 +58,7 @@ function animate() {
 
 	if (Math.abs(o.spinSpeed) > spinThresh) {
 	    o.rotationAngle = (o.rotationAngle + o.spinSpeed*0.5) % 360;
-	    b.css("transform", "rotate(" + rotationAngle + "deg)");
+	    o.b.css("transform", "rotate(" + o.rotationAngle + "deg)");
 	    o.spinSpeed = o.spinSpeed * o.spinDecay;
 	}
 	
