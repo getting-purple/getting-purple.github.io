@@ -79,18 +79,18 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
 	if (jq_string == '#bouncer') {
 	    if (destroy_mode) {
 		$('.post').each(function() {
-		    if (!overlaping.includes(this)) {
+		    if (!overlaping.includes(this.id)) {
 			if (checkColiding(b,$(this))) {
 			    mass_ratio =  ($(this).height() * $(this).width()) /  (b.height() * b.width())
 			    console.log('starting new child on '+this+"with mass ratio"+mass_ratio)
 			    run_bouncing_ball(this, MS_PER_FRAME * 2, speed * 100/mass_ratio, angle,true);
 			    running_children = running_children.concat(this)
-			    overlaping = overlaping.concat(this)
+			    overlaping = overlaping.concat(this.id)
 			}
 		    }
 		    else {
 			if (! checkColiding(b,$(this))) {
-			    overlaping = overlaping.splice(overlaping.indexOf('b'),1)
+			    overlaping.splice(overlaping.indexOf(this.id),1)
 			}   
 		    }
 		});
