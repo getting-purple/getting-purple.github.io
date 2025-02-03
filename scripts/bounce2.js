@@ -8,6 +8,7 @@ basic_objects_jq.each(function() {
     basic_objects[this.id] = {
 	id: this.id,
 	speed:0,
+	gravSpeed:0,
 	angle:0,
 	spinSpeed:0,
 	spinDecay:0.99,
@@ -51,6 +52,7 @@ function default_next_speed(speed,acceleration) {
 let keep_going=false;
 let destroy_mode=false;
 let super_destroy_mode=false;
+let gravity=false;
 function animate() {
     let all_stopped=true;
     for (i in objects) {
@@ -90,8 +92,15 @@ function animate() {
 	o.dy=Math.sin(o.angle)*Math.sqrt(2);
 	o.dx=Math.cos(o.angle)*Math.sqrt(2);
 
+	let old_y=o.y;
 	o.y = o.y + o.dy*(MS_PER_FRAME/100*o.speed);
 	o.x = o.x + o.dx*(MS_PER_FRAME/100*o.speed);
+
+	let g=9;
+	if (gravity) {
+	    o.y = o.y + (MS_PER_FRAME/100 * o.gravSpeed);
+	    gravSpeed += o.y - old_y
+	}
 	
 	o.b.css('top',o.y);
 	o.b.css('left',o.x);
@@ -185,6 +194,11 @@ $('#stopBouncing').click(function() {
 $('#destroy_mode').click(function() {
     destroy_mode = !destroy_mode
     if (destroy_mode) $(this).css('background','red')
+    else $(this).css('background','none')
+});
+$('#gravity').click(function() {
+    gravity=!gravity
+    if (gravity) $(this).css('background','mediumaquamarine')
     else $(this).css('background','none')
 });
 
