@@ -25,7 +25,7 @@ objects_jq.each(function() {
     }
 })
 function default_next_speed(speed,acceleration) {
-    return speed + 0.1
+    return speed
 }
 
 let keep_going=false;
@@ -96,9 +96,7 @@ function animate() {
 		    o.speed=START_SPEED*100/mass_ratio
 		    o.angle += Math.sin(o2.angle)*Math.cos(o2.angle)
 		    o.spinSpeed+=Math.sqrt(o.speed) * Math.sin(o.angle) * Math.cos(o.angle);
-		    o.next_speed = function(speed, acc) {
-			return speed - 0.01;
-		    }
+		    o.next_speed = function(speed, acc) {return speed - 0.01;}
 		    
 		}
 	    }
@@ -130,6 +128,7 @@ function start_bouncing(by_id) {
 	console.log("comence bouncing");
 	$('#'+by_id).show()
 	keep_going=true;
+	objects[by_id].next_speed = function(speed,acc) {return speed+0.01};
 	objects[by_id].speed=START_SPEED;
 	objects[by_id].angle = Math.random() * 2 * Math.PI;
 	animate();
