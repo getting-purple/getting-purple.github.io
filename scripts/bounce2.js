@@ -137,8 +137,8 @@ function start_bouncing(by_id) {
     
 function randomTurn(w) {
     r = Math.random()
-    new_angle += r*w - w/2;
-    return new_angle
+    turn = r*w - w/2;
+    return turn
 }
 
 $('#startBouncing').click(function() {
@@ -166,7 +166,7 @@ $('#destroy_mode').click(function() {
 let temp_acc = {}
 $('#speedUp').click(function() {
     temp_acc['start']=objects['bouncer'].speed
-    
+    objects['bouncer'].angle += randomTurn(Math.PI/3.5)
     objects['bouncer'].next_speed  = function(speed, acc) {return speed*1.5}
     setTimeout(function() {
 	objects['bouncer'].next_speed = function(speed, acc) {
@@ -179,9 +179,21 @@ $('#speedUp').click(function() {
 $('#speedUp').mousedown(function(){$(this).css('background','darkseagreen')})
 $('#speedUp').mouseup(function(){$(this).css('background','none')})
 
+$('#slowDown').click(function() {
+    objects['bouncer'].angle += Math.PI;
+    objects['bouncer'].angle += randomTurn(Math.PI/3.5);
+    if (objects['bouncer'].speed > 5) {
+	temp_acc['start']=objects['bouncer'].speed
+	objects['bouncer'].next_speed  = function(speed, acc) {return speed*.8}
+	setTimeout(function() {
+	    objects['bouncer'].next_speed  = function(speed, acc) {return speed+0.01}
+	}, 500)
+    }
+})
+		     
+$('#slowDown').mousedown(function(){$(this).css('background','lightcoral')})
+$('#slowDown').mouseup(function(){$(this).css('background','none')})
 
-
-    
 // let old_speed,burst,max_burst;
 // function growBurst(){
 //     burst = burst*2;
@@ -212,14 +224,6 @@ $('#speedUp').mouseup(function(){$(this).css('background','none')})
 // if (jq_string == '#bouncer') { //code for the bouncing ball only
     
 //     // The button on the left ____ (slow down and reverse bouncer)
-//     $('#slowDown').click(function() {
-// 	angle += Math.PI;
-// 	randomTurn(Math.PI/3);
-// 	if (speed > 5)
-// 	    old_speed=speed*.8;
-// 	decayBurst();                   })
-//     $('#slowDown').mousedown(function(){$(this).css('background','lightcoral')})
-//     $('#slowDown').mouseup(function(){$(this).css('background','none')})
     
 //     // The button on the right ----- (push along bouncer)
 //     $('#clearAll').click(function() {
