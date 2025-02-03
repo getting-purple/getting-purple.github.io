@@ -14,6 +14,7 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
     let stopping=false;
     let destroy_mode=false;
     let running_children = [];
+    console.log('start new run with '+jq_string+'\nspeed='+speed+'\nangle='+angle)
     
     function bounce() {
 	y = y + dy*(smooth/100*speed);
