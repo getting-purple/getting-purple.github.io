@@ -1,3 +1,4 @@
+const g=9;
 const MS_PER_FRAME=33.33333;
 const START_SPEED=5;
 const spinThresh=0.01;
@@ -96,10 +97,9 @@ function animate() {
 	o.y = o.y + o.dy*(MS_PER_FRAME/100*o.speed);
 	o.x = o.x + o.dx*(MS_PER_FRAME/100*o.speed);
 
-	let g=9;
 	if (gravity) {
 	    o.y = o.y + (MS_PER_FRAME/100 * o.gravSpeed);
-	    gravSpeed += o.y - old_y
+	    o.gravSpeed += o.y - old_y
 	}
 	
 	o.b.css('top',o.y);
