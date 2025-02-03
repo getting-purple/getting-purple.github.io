@@ -70,8 +70,8 @@ function animate() {
 	}
 	
 	// calculate direction
-	o.dy=Math.sin(angle)*Math.sqrt(2);
-	o.dx=Math.cos(angle)*Math.sqrt(2);
+	o.dy=Math.sin(o.angle)*Math.sqrt(2);
+	o.dx=Math.cos(o.angle)*Math.sqrt(2);
 
 	o.y = o.y + o.dy*(MS_PER_FRAME/100*speed);
 	o.x = o.x + o.dx*(MS_PER_FRAME/100*speed);
