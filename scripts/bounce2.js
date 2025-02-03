@@ -96,6 +96,9 @@ function animate() {
 			    console.log('starting new child on '+this+"with mass ratio"+mass_ratio)
 			    o2.speed=START_SPEED*100/mass_ratio
 			    o2.spinSpeed+=Math.sqrt(o2.speed) * Math.sin(o2.angle) * Math.cos(o2.angle);
+			    o2.next_speed = function(speed, acc) {
+				return speed - 0.01;
+			    }
 			    ///
 			    // run_bouncing_ball(o2.b, MS_PER_FRAME * 2, speed * 100/mass_ratio, angle,true);
 			    // o.running_children = o.running_children.concat(this)
