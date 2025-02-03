@@ -97,19 +97,21 @@ function animate() {
 	o.y = o.y + o.dy*(MS_PER_FRAME/100*o.speed);
 	o.x = o.x + o.dx*(MS_PER_FRAME/100*o.speed);
 
-	if (gravity && o.b.position().top + o.b.height() <= window.innerHeight) {
-	    o.gravSpeed += Math.max(1,Math.abs(o.y - old_y));
-	    o.y = o.y + (MS_PER_FRAME/100 * o.gravSpeed);
+	if (gravity) {
+	    if (o.b.id == 'bouncer') {
+		if(o.b.position().top + o.b.height() <= window.innerHeight) {
+		    o.gravSpeed += Math.max(1,Math.abs(o.y - old_y));
+		    o.y = o.y + (MS_PER_FRAME/100 * o.gravSpeed);
+		}
+	    }else {
+		o.gravSpeed += Math.max(1,Math.abs(o.y - old_y));
+		o.y = o.y + (MS_PER_FRAME/100 * o.gravSpeed);
+	    }
 	}
 	
 	o.b.css('top',o.y);
 	o.b.css('left',o.x);
 
-	
-	// if (o.speed <= 0.1) {//stop
-	//     o.speed_increasing=true;
-	//     o.stopping=false;
-	// }
 	
 	// Colisions
 	i2="bouncer"
@@ -246,52 +248,3 @@ $('#slowDown').click(function() {
 $('#slowDown').mousedown(function(){$(this).css('background','lightcoral')})
 $('#slowDown').mouseup(function(){$(this).css('background','none')})
 
-// let old_speed,burst,max_burst;
-// function growBurst(){
-//     burst = burst*2;
-//     speed = old_speed + burst;
-//     if (speed < max_burst) setTimeout(growBurst,10);
-//     else decayBurst();
-// }
-
-// function decayBurst(){
-//     burst = burst *.95;
-//     speed = old_speed + burst;
-//     if (speed > old_speed * 1.1) setTimeout(decayBurst,50);
-//     else console.log("done: speed="+speed+"; burst="+burst+"; max_burst="+max_burst);
-//     }
-
-// function startBurst() {
-//     randomTurn(Math.PI/4);
-//     old_speed=speed;
-//     max_burst=1500-(400000/(speed+266.67))
-// 	burst=1;
-//     growBurst();
-// }
-/////////////
-
-
-// Buttons
-
-// if (jq_string == '#bouncer') { //code for the bouncing ball only
-    
-//     // The button on the left ____ (slow down and reverse bouncer)
-    
-//     // The button on the right ----- (push along bouncer)
-//     $('#clearAll').click(function() {
-// 	running_children = [];
-//     });
-// }
-// else { //code for all the other objects only
-//     $('#destroy_mode').click(function() {
-//         destroy_mode = false
-//     });
-    
-//     // starting via collision!
-//     console.log('rogue start! bounce on!')
-//     console.log(jq_string);
-//     spinSpeed+=Math.sqrt(speed) * Math.sin(angle) * Math.cos(angle);
-//     spin();
-//     start_bouncing();
-// }
-// }
