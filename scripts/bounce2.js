@@ -154,7 +154,7 @@ $('#stopBouncing').click(function() {
 
 	for (i in objects) {
 	    o = objects[i]
-	    o..stopping=true;
+	    o.stopping=true;
 	    o.next_speed = function(speed,acc){return speed*(Math.max(0.5,0.97-(speed/350)))}
 
 	}
