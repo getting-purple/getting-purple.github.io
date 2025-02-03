@@ -88,7 +88,7 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
 		    }
 		    else {
 			if (! checkColiding(b,$(this))) {
-			    overlaping = overlaping.splice(l.indexOf('b'),1)
+			    overlaping = overlaping.splice(overlaping.indexOf('b'),1)
 			}   
 		    }
 		});
