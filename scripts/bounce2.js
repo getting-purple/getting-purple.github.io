@@ -42,15 +42,15 @@ function animate() {
 	    o.angle=-1*o.angle;
 	    spinFactor=Math.cos(o.angle);
 	}
-	if (b.position().top < 0 && o.dy < 0) {
+	if (o.b.position().top < 0 && o.dy < 0) {
 	    o.angle=-1*o.angle;
 	    spinFactor=Math.cos(o.angle) * -1;
 	}
-	if (b.position().left < 0 && o.dx < 0) {
+	if (o.b.position().left < 0 && o.dx < 0) {
 	    o.angle=Math.PI-o.angle;
 	    spinFactor=Math.sin(o.angle);
 	}
-	if (b.position().left + b.width() >  window.innerWidth && o.dx > 0) { // $('body').width()
+	if (o.b.position().left + o.b.width() >  window.innerWidth && o.dx > 0) { // $('body').width()
 	    o.angle=Math.PI-o.angle;
 	    spinFactor=Math.sin(o.angle) * -1;
 	}
@@ -63,7 +63,7 @@ function animate() {
 	}
 	
 	// controll speed
-	if (!stopping) {
+	if (!o.stopping) {
 	    o.speed = o.next_speed(o.speed,o.acc)
 	} else {
 	    o.speed = o.speed*(Math.max(0.5,0.97-(o.speed/350)))
