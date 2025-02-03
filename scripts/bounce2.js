@@ -107,12 +107,12 @@ function animate() {
 			    o.overlaping.splice(o.overlaping.indexOf(o2.id),1)
 			}   
 		    }
-		});
+		}
+	    }
 	}
-	
-	if (keep_going) {
-	    setTimeout(animate, MS_PER_FRAME)}
     }
+    if (keep_going) {
+	setTimeout(animate, MS_PER_FRAME)}   
 }
 
 // Collisions
