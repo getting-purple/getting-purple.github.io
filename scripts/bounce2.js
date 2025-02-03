@@ -73,8 +73,8 @@ function animate() {
 	o.dy=Math.sin(o.angle)*Math.sqrt(2);
 	o.dx=Math.cos(o.angle)*Math.sqrt(2);
 
-	o.y = o.y + o.dy*(MS_PER_FRAME/100*speed);
-	o.x = o.x + o.dx*(MS_PER_FRAME/100*speed);
+	o.y = o.y + o.dy*(MS_PER_FRAME/100*o.speed);
+	o.x = o.x + o.dx*(MS_PER_FRAME/100*o.speed);
 	
 	o.b.css('top',o.y);
 	o.b.css('left',o.x);
