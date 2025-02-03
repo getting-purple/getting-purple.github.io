@@ -58,7 +58,7 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
 		spin();
 	    }
 	    
-	} else if (jq_string == '#index'){
+	} else if ($(jq_string).id == 'index'){
 	    speed = speed * 0.9999
 	    if (speed < 0.01) keep_going=false;
 	    
