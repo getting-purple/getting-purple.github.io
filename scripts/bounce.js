@@ -86,11 +86,11 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
 	    speed_increasing=true;
 	    stopping=false;
 	}
-
+	
 	// Colisions
 	if (jq_string == '#bouncer') {
 	    if (destroy_mode) {
-		$('.post').each(function() {
+		$('body').children().each(function() {
 		    if (!overlaping.includes(this.id)) {
 			if (checkColiding(b,$(this))) {
 			    mass_ratio =  ($(this).height() * $(this).width()) /  (b.height() * b.width())
