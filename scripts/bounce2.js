@@ -30,9 +30,9 @@ let all_objects = {}
 crawl($('body').children())
 function crawl(collect){
     collect.each(function(){
-	if ($(this).hasAttribute('position')) {
+	if ($(this).position) {
 	    all_objects[$(this).id] = $(this)
-
+	    
 	    if (!$(this).css('position')) {
 		$(this).css('position','relative')
 	    }
