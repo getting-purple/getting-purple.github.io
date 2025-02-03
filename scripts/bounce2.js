@@ -141,6 +141,46 @@ function randomTurn(w) {
     return new_angle
 }
 
+$('#startBouncing').click(function() {
+    if (!keep_going) {
+	$('#stopBouncing').css('background','none');
+	$(this).css('background','gold');
+
+	start_bouncing('bouncer');
+    }
+})
+$('#stopBouncing').click(function() {
+    if (keep_going) {
+	$('#startBouncing').css('background','none');
+	$(this).css('background','lightslategrey');
+
+	for (i in objects) objects[i].stopping=true
+    }
+})
+$('#destroy_mode').click(function() {
+    destroy_mode = !destroy_mode
+    if (destroy_mode) $(this).css('background','red')
+    else $(this).css('background','none')
+});
+
+let temp_acc = {}
+$('#speedUp').click(function() {
+    temp_acc['start']=objects['bouncer'].speed
+    
+    objects['bouncer'].next_speed  = function(speed, acc) {return speed*1.5}
+    setTimeout(function() {
+	objects['bouncer'].next_speed = function(speed, acc) {
+	    if (objects['bouncer'].speed < temp_acc['start']*1.2)
+		objects['bouncer'].next_speed  = function(speed, acc) {return speed+0.01}
+	    
+	    return speed*.9}
+    }, 333)
+})
+$('#speedUp').mousedown(function(){$(this).css('background','darkseagreen')})
+$('#speedUp').mouseup(function(){$(this).css('background','none')})
+
+
+
     
 // let old_speed,burst,max_burst;
 // function growBurst(){
@@ -165,28 +205,6 @@ function randomTurn(w) {
 //     growBurst();
 // }
 /////////////
-$('#startBouncing').click(function() {
-    if (!keep_going) {
-	$('#stopBouncing').css('background','none');
-	$(this).css('background','gold');
-
-	start_bouncing('bouncer');
-    }
-})
-$('#stopBouncing').click(function() {
-    if (keep_going) {
-	$('#startBouncing').css('background','none');
-	$(this).css('background','lightslategrey');
-
-	for (i in objects) objects[i].stopping=true
-    }
-})
-$('#destroy_mode').click(function() {
-    destroy_mode = !destroy_mode
-    if (destroy_mode) $(this).css('background','red')
-    else $(this).css('background','none')
-});
-
 
 
 // Buttons
@@ -204,10 +222,6 @@ $('#destroy_mode').click(function() {
 //     $('#slowDown').mouseup(function(){$(this).css('background','none')})
     
 //     // The button on the right ----- (push along bouncer)
-//     $('#speedUp').click(startBurst);
-//     $('#speedUp').mousedown(function(){$(this).css('background','darkseagreen')})
-//     $('#speedUp').mouseup(function(){$(this).css('background','none')})
-
 //     $('#clearAll').click(function() {
 // 	running_children = [];
 //     });
