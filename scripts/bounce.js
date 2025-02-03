@@ -194,7 +194,8 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
 	$('#slowDown').click(function() {
 	    angle += Math.PI;
 	    randomTurn(Math.PI/3);
-	    old_speed=speed*.8;
+	    if (speed > 5)
+		old_speed=speed*.8;
 	    decayBurst();                   })
 	$('#slowDown').mousedown(function(){$(this).css('background','lightcoral')})
 	$('#slowDown').mouseup(function(){$(this).css('background','none')})
