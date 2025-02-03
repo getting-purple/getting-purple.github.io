@@ -84,7 +84,7 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
                 spinSpeed+=Math.sqrt(speed) * Math.sin(angle) * -1;
                 spin();
             }
-	}else {
+	} else {
 	    if (b.position().top < 0 && dy < 0) {
 		angle=-1*angle;
 		spinSpeed+=Math.sqrt(speed) * Math.cos(angle) * -1;
