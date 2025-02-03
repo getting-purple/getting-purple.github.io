@@ -31,7 +31,10 @@ crawl($('body').children())
 function crawl(collect){
     collect.each(function(){
         all_objects[$(this).id] = $(this)
-	
+	if (!$(this).css('position') {
+	    $(this).css('position','relative')
+	}
+
         kids = $(this).children()
         if (kids.length>0){
             crawl(kids);
