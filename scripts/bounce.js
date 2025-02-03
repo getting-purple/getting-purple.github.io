@@ -34,39 +34,41 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
 	    } else {
 		speed = speed*(Math.max(0.5,0.97-(speed/350)))
 	    }
+	    if (b.position().top + b.height() > window.innerHeight && dy > 0) { // $('body').height()
+		angle=-1*angle;
+		spinSpeed+=Math.sqrt(speed) * Math.cos(angle);
+		spin();
+		
+	    }
+	    if (b.position().top < 0 && dy < 0) {
+		angle=-1*angle;
+		spinSpeed+=Math.sqrt(speed) * Math.cos(angle) * -1;
+		spin();
+	    }
+	    
+	    if (b.position().left < 0 && dx < 0) {
+		angle=Math.PI-angle;
+		spinSpeed+=Math.sqrt(speed) * Math.sin(angle);
+		spin();
+	    }
+	    if (b.position().left + b.width() >  window.innerWidth && dx > 0) { // $('body').width()
+		angle=Math.PI-angle;
+		spinSpeed+=Math.sqrt(speed) * Math.sin(angle) * -1;
+		spin();
+	    }
+	    
 	} else {
 	    speed = speed * 0.99999
 	    if (speed < 0.01) keep_going=false;
 	}
+	dy=Math.sin(angle)*Math.sqrt(2);
+	dx=Math.cos(angle)*Math.sqrt(2);
+	ady=dy;adx=dx;
+
 	b.css('top',y);
 	b.css('left',x);
 
 	
-	if (b.position().top + b.height() > window.innerHeight && dy > 0) { // $('body').height()
-	    angle=-1*angle;
-	    spinSpeed+=Math.sqrt(speed) * Math.cos(angle);
-	    spin();
-	    
-	}
-	if (b.position().top < 0 && dy < 0) {
-	    angle=-1*angle;
-	    spinSpeed+=Math.sqrt(speed) * Math.cos(angle) * -1;
-	    spin();
-	}
-
-	if (b.position().left < 0 && dx < 0) {
-	    angle=Math.PI-angle;
-	    spinSpeed+=Math.sqrt(speed) * Math.sin(angle);
-	    spin();
-	}
-	if (b.position().left + b.width() >  window.innerWidth && dx > 0) { // $('body').width()
-	    angle=Math.PI-angle;
-	    spinSpeed+=Math.sqrt(speed) * Math.sin(angle) * -1;
-	    spin();
-	}
-	dy=Math.sin(angle)*Math.sqrt(2);
-	dx=Math.cos(angle)*Math.sqrt(2);
-	axy=dy;adx=dx;
 	if (stopping && speed <= 0.1) {//stop
 	    keep_going=false;
 	    speed_increasing=true;
@@ -219,6 +221,8 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
 	// starting via collision!
 	console.log('rogue start! bounce on!')
 	console.log(jq_string);
+	spinSpeed+=speed * Math.sin(angle) * -1;
+        spin();
         start_bouncing();
     }
 }
