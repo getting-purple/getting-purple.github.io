@@ -63,7 +63,7 @@ function animate() {
 	
 	// controll speed
 	o.speed = o.next_speed(o.speed,o.acc)
-	all_stopped = all_stopped && Maht.abs(o.speed) < 0.1
+	all_stopped = all_stopped && Math.abs(o.speed) < 0.1
 	
 	// calculate direction
 	o.dy=Math.sin(o.angle)*Math.sqrt(2);
