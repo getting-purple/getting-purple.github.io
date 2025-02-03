@@ -2,10 +2,10 @@ const MS_PER_FRAME=33.33333;
 const START_SPEED=5;
 const spinThresh=0.01;
 
-let objects_jq = $('body').children()
-let objects = {};
-objects_jq.each(function() {
-    objects[this.id] = {
+let basic_objects_jq = $('body').children()
+let basic_objects = {};
+basic_objects_jq.each(function() {
+    basic_objects[this.id] = {
 	id: this.id,
 	speed:0,
 	angle:0,
@@ -24,12 +24,29 @@ objects_jq.each(function() {
 	acc:{}
     }
 })
+let objects = basic_objects;
+
+let all_objects = {}
+crawl($('body').children())
+function crawl(collect){
+    collect.each(function(){
+        all_objects[$(this).id] = $(this)
+	
+        kids = $(this).children()
+        if (kids.length>0){
+            crawl(kids);
+        }
+    })
+}
+
+
 function default_next_speed(speed,acceleration) {
     return speed
 }
 
 let keep_going=false;
 let destroy_mode=false;
+let super_destroy_mode=false;
 function animate() {
     let all_stopped=true;
     for (i in objects) {
@@ -166,6 +183,19 @@ $('#destroy_mode').click(function() {
     if (destroy_mode) $(this).css('background','red')
     else $(this).css('background','none')
 });
+
+$('#SUPER_destroy_mode').click(function() {
+    super_destroy_mode = !super_destroy_mode
+    if (super_destroy_mode) {
+	$(this).css('background','red');
+	objects=all_objects;
+    }
+    else {
+	$(this).css('background','none');
+	objects=basic_objects;
+    }
+});
+
 
 let temp_acc = {}
 $('#speedUp').click(function() {
