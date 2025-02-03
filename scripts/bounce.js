@@ -1,7 +1,7 @@
 const MS_PER_FRAME=33.33333;
 
 run_bouncing_ball('#bouncer');
-function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle='none', spinThresh=0.01, spinDecay=0.99) {
+function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle='none', destroy_mode=false, spinThresh=0.01, spinDecay=0.99) {
     let keep_going=false;
     let b = $(jq_string);
     let y=0; let x=0;
@@ -12,7 +12,6 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
     let spinSpeed=0;
     let rotationAngle=0;
     let stopping=false;
-    let destroy_mode=false;
     let running_children = [];
     console.log('start new run with '+jq_string+'\nspeed='+speed+'\nangle='+angle)
     
@@ -75,7 +74,7 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
 			if (checkColiding(b,$(this))) {
 			    mass_ratio =  ($(this).height() * $(this).width()) /  (b.height() * b.width())
 			    console.log('starting new child on '+this+"with mass ratio"+mass_ratio)
-			    run_bouncing_ball(this, MS_PER_FRAME * 2, speed * 400/mass_ratio, angle);
+			    run_bouncing_ball(this, MS_PER_FRAME * 2, speed * 400/mass_ratio, angle,true);
 			    running_children = running_children.concat(this)
 			}
 		    }
