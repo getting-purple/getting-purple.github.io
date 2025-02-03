@@ -132,8 +132,7 @@ function start_bouncing(by_id) {
 	$('#'+by_id).show()
 	keep_going=true;
 	objects[by_id].speed=START_SPEED;
-	if (angle == 'none')
-	    objects[by_id].angle = Math.random() * 2 * Math.PI;
+	objects[by_id].angle = Math.random() * 2 * Math.PI;
 	animate();
     }
 }
