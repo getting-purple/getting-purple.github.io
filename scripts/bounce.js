@@ -58,7 +58,19 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
 	    }
 	    
 	} else {
-	    speed = speed * 0.99999
+	    if (b.position().top < 0 && dy < 0) {
+		angle=-1*angle;
+		spinSpeed+=Math.sqrt(speed) * Math.cos(angle) * -1;
+		spin();
+	    }
+	    
+	    if (b.position().left < 0 && dx < 0) {
+		angle=Math.PI-angle;
+		spinSpeed+=Math.sqrt(speed) * Math.sin(angle);
+		spin();
+	    }
+	    
+	    speed = speed * 0.9999
 	    if (speed < 0.01) keep_going=false;
 	}
 	dy=Math.sin(angle)*Math.sqrt(2);
@@ -222,7 +234,7 @@ function run_bouncing_ball(jq_string, smooth=MS_PER_FRAME, START_SPEED=5, angle=
 	// starting via collision!
 	console.log('rogue start! bounce on!')
 	console.log(jq_string);
-	spinSpeed+=speed * Math.sin(angle) * -1;
+	spinSpeed+=Math.sqrt(speed) * Math.sin(angle) * Math.cos(angle);
         spin();
         start_bouncing();
     }
