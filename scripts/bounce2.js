@@ -32,7 +32,7 @@ let all_objects = {}
 crawl($('body').children())
 function crawl(collect){
     collect.each(function(){
-	if ($(this).position) {
+	if ($(this).position && this.id) {
 	    console.log('crawling '+this.id+': '+$(this).html());
 	    all_objects[this.id] = $(this)
 	    
