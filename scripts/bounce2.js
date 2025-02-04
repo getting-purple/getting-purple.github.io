@@ -34,28 +34,30 @@ function crawl(collect){
     collect.each(function(){
 	if ($(this).position && this.id) {
 	    console.log('crawling '+this.id+': '+$(this).html());
-	    all_objects[this.id] = {
-		id: this.id,
-		speed:0,
-		gravSpeed:0,
-		angle:0,
-		spinSpeed:0,
-		spinDecay:0.99,
-		rotationAngle:0,
-		b:$(this),
-		speedIncreasing:true,
-		stopping:false,
-		running_children: [],
-		overlaping: [],
-		x: $(this).offset().left,
-		y: $(this).offset().top,
-		dy: 0, dx: 0,
-		next_speed: default_next_speed,
-		acc:{}
-	    }
-	    
+	    if (basic_objects[this.id]) { all_objects[this.id] = basic_objects[this.id] }
+	    else {
+		all_objects[this.id] = {
+		    id: this.id,
+		    speed:0,
+		    gravSpeed:0,
+		    angle:0,
+		    spinSpeed:0,
+		    spinDecay:0.99,
+		    rotationAngle:0,
+		    b:$(this),
+		    speedIncreasing:true,
+		    stopping:false,
+		    running_children: [],
+		    overlaping: [],
+		    x: $(this).offset().left,
+		    y: $(this).offset().top,
+		    dy: 0, dx: 0,
+		    next_speed: default_next_speed,
+		    acc:{}
+		}
+	    }	    
 	    if (!$(this).css('position')) {
-		$(this).css('position','relative')
+		$(this).css('position','absolute')
 	    }
 	}
         kids = $(this).children()
