@@ -71,7 +71,7 @@ function crawl(collect,i=0,calls=1){
 	}
         kids = $(this).children()
         if (kids.length>0){
-            crawl(kids,i*100*calls,j+1);
+            crawl(kids,i*100*calls, calls+1);
         }
     })
 }
