@@ -244,14 +244,22 @@ $('#gravity').click(function() {
 });
 
 $('#SUPER_destroy_mode').click(function() {
-    super_destroy_mode = !super_destroy_mode
-    if (super_destroy_mode) {
-	$(this).css('background','red');
-	objects=all_objects;
+    if (destroy_mode || super_destroy_mode) {
+	super_destroy_mode = !super_destroy_mode
+	if (super_destroy_mode) {
+	    $(this).css('background','red');
+	    objects=all_objects;
+	}
+	else {
+	    $(this).css('background','none');
+	    objects=basic_objects;
+	}
     }
     else {
-	$(this).css('background','none');
-	objects=basic_objects;
+	$('#SUPERdestroyLabel').text('Turn on Destroy Mode before Super Destroy Mode')
+	setTimeout(function() {
+	    $('#SUPERdestroyLabel').text('')
+	}, 5000);
     }
 });
 
