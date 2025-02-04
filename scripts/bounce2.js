@@ -33,7 +33,7 @@ crawl($('body').children())
 function crawl(collect,i=0,calls=1){
     collect.each(function(){
 	i +=1;
-	if ($(this).position && (
+	if ($(this).offset && (
 	    this.id || this.name == 'p' || this.name == 'a'
 	)) {
 	    if (basic_objects[this.id]) {
@@ -91,19 +91,19 @@ function animate() {
 
 	// Check for hitting the walls to reflect direction and spin object
 	let spinFactor=0;
-	if (o.b.position().top + o.b.height() > window.innerHeight && o.dy > 0) { // $('body').height()
+	if (o.b.offset().top + o.b.height() > window.innerHeight && o.dy > 0) { // $('body').height()
 	    o.angle=-1*o.angle;
 	    spinFactor=Math.cos(o.angle);
 	}
-	if (o.b.position().top < 0 && o.dy < 0) {
+	if (o.b.offset().top < 0 && o.dy < 0) {
 	    o.angle=-1*o.angle;
 	    spinFactor=Math.cos(o.angle) * -1;
 	}
-	if (o.b.position().left < 0 && o.dx < 0) {
+	if (o.b.offset().left < 0 && o.dx < 0) {
 	    o.angle=Math.PI-o.angle;
 	    spinFactor=Math.sin(o.angle);
 	}
-	if (o.b.position().left + o.b.width() >  window.innerWidth && o.dx > 0) { // $('body').width()
+	if (o.b.offset().left + o.b.width() >  window.innerWidth && o.dx > 0) { // $('body').width()
 	    o.angle=Math.PI-o.angle;
 	    spinFactor=Math.sin(o.angle) * -1;
 	}
@@ -129,7 +129,7 @@ function animate() {
 
 	if (gravity) {
 	    if (o.b.id == 'bouncer') {
-		if(o.b.position().top + o.b.height() <= window.innerHeight) {
+		if(o.b.offset().top + o.b.height() <= window.innerHeight) {
 		    o.gravSpeed += Math.max(1,Math.abs(o.y - old_y));
 		    o.y = o.y + (MS_PER_FRAME/100 * o.gravSpeed);
 		}
