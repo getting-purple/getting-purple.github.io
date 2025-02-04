@@ -198,15 +198,29 @@ $('#stopBouncing').click(function() {
     }
 })
 $('#destroy_mode').click(function() {
-    destroy_mode = !destroy_mode
-    if (destroy_mode) $(this).css('background','red')
-    else $(this).css('background','none')
+    if (keep_going || destroy_mode) {
+	destroy_mode = !destroy_mode
+	if (destroy_mode) $(this).css('background','red')
+	else $(this).css('background','none')
+    }
+    else {
+	$('destroyLabel').text('Turn on Bounce before Destroy Mode')
+	setTimeout(function() {
+	    $('destroyLabel').text('')
+	}, 5000);
+    }
 });
 $('#gravity').click(function() {
     if (destroy_mode || gravity) {
 	gravity=!gravity
 	if (gravity) $(this).css('background','mediumaquamarine')
 	else $(this).css('background','none')
+    }
+    else {
+	$('gravityLabel').text('Turn on Destroy Mode before Gravity')
+	setTimeout(function() {
+	    $('gravityLabel').text('')
+	}, 5000);
     }
 });
 
