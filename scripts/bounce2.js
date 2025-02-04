@@ -204,9 +204,9 @@ $('#destroy_mode').click(function() {
 	else $(this).css('background','none')
     }
     else {
-	$('destroyLabel').text('Turn on Bounce before Destroy Mode')
+	$('#destroyLabel').text('Turn on Bounce before Destroy Mode')
 	setTimeout(function() {
-	    $('destroyLabel').text('')
+	    $('#destroyLabel').text('')
 	}, 5000);
     }
 });
@@ -217,9 +217,9 @@ $('#gravity').click(function() {
 	else $(this).css('background','none')
     }
     else {
-	$('gravityLabel').text('Turn on Destroy Mode before Gravity')
+	$('#gravityLabel').text('Turn on Destroy Mode before Gravity')
 	setTimeout(function() {
-	    $('gravityLabel').text('')
+	    $('#gravityLabel').text('')
 	}, 5000);
     }
 });
