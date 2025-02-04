@@ -30,8 +30,7 @@ let objects = basic_objects;
 
 let all_objects = {}
 crawl($('body').children())
-function crawl(collect){
-    let i=0;
+function crawl(collect,i=0,calls=1){
     collect.each(function(){
 	i +=1;
 	if ($(this).position && (
@@ -40,7 +39,10 @@ function crawl(collect){
 	    console.log('crawling '+this.id+': '+$(this).html());
 	    if (basic_objects[this.id]) { all_objects[this.id] = basic_objects[this.id] }
 	    else {
-		all_objects[if(this.id){this.id}else{this.name+i] = {
+		if (!this.id){
+		    this.id=this.name+i;
+		}
+		all_objects[this.id] = {
 		    id: this.id,
 		    speed:0,
 		    gravSpeed:0,
@@ -66,7 +68,7 @@ function crawl(collect){
 	}
         kids = $(this).children()
         if (kids.length>0){
-            crawl(kids);
+            crawl(kids,i*100*calls,j+1);
         }
     })
 }
