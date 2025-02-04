@@ -33,7 +33,7 @@ crawl($('body').children())
 function crawl(collect){
     collect.each(function(){
 	if ($(this).position) {
-	    console.log('crawling '+this);
+	    console.log('crawling '+$(this).id+': '+$(this));
 	    all_objects[$(this).id] = $(this)
 	    
 	    if (!$(this).css('position')) {
