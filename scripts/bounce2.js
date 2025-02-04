@@ -32,7 +32,9 @@ let all_objects = {}
 crawl($('body').children())
 function crawl(collect){
     collect.each(function(){
-	if ($(this).position && this.id) {
+	if ($(this).position && (
+	    this.id || this.name == 'p' || this.name == 'a'
+	)) {
 	    console.log('crawling '+this.id+': '+$(this).html());
 	    if (basic_objects[this.id]) { all_objects[this.id] = basic_objects[this.id] }
 	    else {
