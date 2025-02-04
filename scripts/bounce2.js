@@ -165,7 +165,7 @@ function animate() {
 		    let saved_next_speed=o2.next_speed
 		    o2.next_speed = function(speed,acc){return saved_next_speed(speed,acc)*0.95}
 		    setTimeout(()=>o2.next_speed=saved_next_speed,250)
-		    o2.angle = (o2.angle + Math.PI+randomTurn(Math.PI/4)%360
+		    o2.angle = (o2.angle + Math.PI+randomTurn(Math.PI/4))%360
 		    
 		}
 	    }
