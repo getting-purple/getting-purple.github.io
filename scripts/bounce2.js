@@ -31,14 +31,16 @@ let objects = basic_objects;
 let all_objects = {}
 crawl($('body').children())
 function crawl(collect){
+    let i=0;
     collect.each(function(){
+	i +=1;
 	if ($(this).position && (
 	    this.id || this.name == 'p' || this.name == 'a'
 	)) {
 	    console.log('crawling '+this.id+': '+$(this).html());
 	    if (basic_objects[this.id]) { all_objects[this.id] = basic_objects[this.id] }
 	    else {
-		all_objects[this.id] = {
+		all_objects[if(this.id){this.id}else{this.name+i] = {
 		    id: this.id,
 		    speed:0,
 		    gravSpeed:0,
