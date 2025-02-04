@@ -36,12 +36,15 @@ function crawl(collect,i=0,calls=1){
 	if ($(this).position && (
 	    this.id || this.name == 'p' || this.name == 'a'
 	)) {
-	    console.log('crawling '+this.id+': '+$(this).html());
-	    if (basic_objects[this.id]) { all_objects[this.id] = basic_objects[this.id] }
+	    if (basic_objects[this.id]) {
+		all_objects[this.id] = basic_objects[this.id]
+		console.log('linking all_objects['+this.id+'] = basic_objects['+this.id+']');
+	    }
 	    else {
 		if (!this.id){
 		    this.id=this.name+i;
 		}
+		console.log('creating all_objects['+this.id+'] = {...}');
 		all_objects[this.id] = {
 		    id: this.id,
 		    speed:0,
