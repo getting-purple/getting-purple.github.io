@@ -122,7 +122,7 @@ function animate() {
 	// calculate direction
 	o.dy=Math.sin(o.angle)*Math.sqrt(2);
 	o.dx=Math.cos(o.angle)*Math.sqrt(2);
-
+	
 	let old_y=o.y;
 	o.y = o.y + o.dy*(MS_PER_FRAME/100*o.speed);
 	o.x = o.x + o.dx*(MS_PER_FRAME/100*o.speed);
@@ -154,11 +154,18 @@ function animate() {
 	    if (!o2.overlaping.includes(o.id)) {
 		if (checkColiding(o2.b,o.b)) {
 		    mass_ratio =  (o.b.height() * o.b.width()) /  (o2.b.height() * o2.b.width())
-		    console.log('starting new child on '+this+"with mass ratio"+mass_ratio)
+		    console.log('collision! '+this.id+"MR"+mass_ratio)
+		    //region
 		    o.speed=START_SPEED*100/mass_ratio
 		    o.angle += Math.sin(o2.angle)*Math.cos(o2.angle)
 		    o.spinSpeed+=Math.sqrt(o.speed) * Math.sin(o.angle) * Math.cos(o.angle);
 		    o.next_speed = function(speed, acc) {return Math.max(0,speed - 0.01);}
+
+		    //ball
+		    let saved_next_speed=o2.next_speed
+		    o2.next_speed = function(speed,acc){return saved_next_speed(speed,acc)*0.95}
+		    setTimeout(()=>o2.next_speed=saved_next_speed,250)
+		    o2.angle = (o2.angle + Math.PI+randomTurn(Math.PI/4)%360
 		    
 		}
 	    }
@@ -293,7 +300,7 @@ $('#speedUp').mouseup(function(){$(this).css('background','none')})
 
 $('#slowDown').click(function() {
     objects['bouncer'].angle += Math.PI;
-    objects['bouncer'].angle += randomTurn(Math.PI/3.5);
+    objects['bouncer'].angle += randomTurn(Math.PI*.75);
     if (objects['bouncer'].speed > 5) {
 	temp_acc['start']=objects['bouncer'].speed
 	objects['bouncer'].next_speed  = function(speed, acc) {return speed*.8}
