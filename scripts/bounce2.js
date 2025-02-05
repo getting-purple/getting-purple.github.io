@@ -130,7 +130,7 @@ function animate() {
 	o.dx=Math.cos(o.angle)*Math.sqrt(2);
 	
 	let old_y=o.y;
-	o.speed = Min(Math.sqrt(window.innerHeight**2 + window.innerHeight**2) / 2,
+	o.speed = Math.min(Math.sqrt(window.innerHeight**2 + window.innerHeight**2) / 2,
 		      MS_PER_FRAME/100*o.speed)
 	o.y = o.y + o.dy*(MS_PER_FRAME/100*o.speed);
 	o.x = o.x + o.dx*(MS_PER_FRAME/100*o.speed);
