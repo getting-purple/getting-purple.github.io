@@ -183,6 +183,7 @@ function animate() {
 	setTimeout(animate, MS_PER_FRAME)}
     else {
 	keep_going = false
+	$('#bouncer').css('display','none')
     }
 }
 
@@ -224,6 +225,9 @@ function start_bouncing(by_id) {
     if (!keep_going) {
 	console.log("comence bouncing");
 	$('#'+by_id).show()
+	$('#'+by_id).css('top','20px')
+	$('#'+by_id).css('left','20px')
+	
 	keep_going=true;
 	objects[by_id].next_speed = function(speed,acc) {return speed+0.01};
 	objects[by_id].speed=START_SPEED;
