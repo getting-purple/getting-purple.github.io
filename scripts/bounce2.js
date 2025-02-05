@@ -21,8 +21,8 @@ basic_objects_jq.each(function() {
 	stopping:false,
 	running_children: [],
 	overlaping: [],
-	x: $(this).offset().left,
-	y: $(this).offset().top,
+	x: $(this).position().left,
+	y: $(this).position().top,
 	dy: 0, dx: 0,
 	next_speed: default_next_speed,
 	acc:{}
@@ -35,7 +35,7 @@ crawl($('body').children())
 function crawl(collect,i=0,calls=1){
     collect.each(function(){
 	i +=1;
-	if ($(this).offset && (
+	if ($(this).position && (
 	    this.id || this.name == 'p' || this.name == 'a'
 	)) {
 	    if (basic_objects[this.id]) {
@@ -60,8 +60,8 @@ function crawl(collect,i=0,calls=1){
 		    stopping:false,
 		    running_children: [],
 		    overlaping: [],
-		    x: $(this).offset().left,
-		    y: $(this).offset().top,
+		    x: $(this).position().left,
+		    y: $(this).position().top,
 		    dy: 0, dx: 0,
 		    next_speed: default_next_speed,
 		    acc:{}
@@ -94,27 +94,23 @@ function animate() {
 	// Check for hitting the walls to reflect direction and spin object
 	let spinFactor=0;
 	let reflected=false;
-	let pos_function=o.b.offset
-	if (o.b.css('position')=='fixed') {
-	    pos_function = o.b.position
-	}
 
-	if (pos_function().top + o.b.height() > window.innerHeight && o.dy > 0) {
+	if (o.b.position().top + o.b.height() > window.innerHeight && o.dy > 0) {
 	    o.angle=-1*o.angle;
 	    spinFactor=Math.cos(o.angle);
 	    reflected=true;
 	}
-	if (pos_function().top < 0 && o.dy < 0) {
+	if (o.b.position().top < 0 && o.dy < 0) {
 	    o.angle=-1*o.angle;
 	    spinFactor=Math.cos(o.angle) * -1;
 	    reflected=true;
 	}
-	if (pos_function().left < 0 && o.dx < 0) {
+	if (o.b.position().left < 0 && o.dx < 0) {
 	    o.angle=Math.PI-o.angle;
 	    spinFactor=Math.sin(o.angle);
 	    reflected=true;
 	}
-	if (pos_function().left + o.b.width() >  window.innerWidth && o.dx > 0) { // $('body').width()
+	if (o.b.position().left + o.b.width() >  window.innerWidth && o.dx > 0) { // $('body').width()
 	    o.angle=Math.PI-o.angle;
 	    spinFactor=Math.sin(o.angle) * -1;
 	    reflected=true;
