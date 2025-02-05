@@ -94,12 +94,11 @@ function animate() {
 	// Check for hitting the walls to reflect direction and spin object
 	let spinFactor=0;
 	let reflected=false;
+	let pos_function=o.b.offset
 	if (o.b.css('position')=='fixed') {
 	    pos_function = o.b.position
 	}
-	else {
-	    pos_function = o.b.offset
-	}
+
 	if (pos_function().top + o.b.height() > window.innerHeight && o.dy > 0) {
 	    o.angle=-1*o.angle;
 	    spinFactor=Math.cos(o.angle);
