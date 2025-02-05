@@ -298,7 +298,7 @@ $('#gravity').click(function() {
 
 $('#goBottom').click(function() {
     window.scrollY = FLOOR
-}
+});
 
 $('#SUPER_destroy_mode').click(function() {
     if (destroy_mode || super_destroy_mode) {
