@@ -163,7 +163,8 @@ function animate() {
 
 		    //ball
 		    o2.angle = (o2.angle + Math.PI+randomTurn(Math.PI/4))%360
-		    
+
+		    o2.overlaping = o2.overlaping.concat(o.id);
 		}
 	    }
 	    else {
