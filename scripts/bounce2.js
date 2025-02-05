@@ -129,15 +129,13 @@ function animate() {
 	o.x = o.x + o.dx*(MS_PER_FRAME/100*o.speed);
 
 	if (gravity && o.css('position')!='fixed') {
+	    if (o.y < FLOOR) {
+		o.gravSpeed += Math.max(1,Math.abs(o.y - old_y));
+		o.y = o.y + (MS_PER_FRAME/100 * o.gravSpeed);
+	    }
 	    else {
-		if (o.y < FLOOR) {
-		    o.gravSpeed += Math.max(1,Math.abs(o.y - old_y));
-		    o.y = o.y + (MS_PER_FRAME/100 * o.gravSpeed);
-		}
-		else {
-		    o.gravSpeed =0
-		    o.y = o.y;
-		}
+		o.gravSpeed =0
+		o.y = o.y;
 	    }
 	}
 	
