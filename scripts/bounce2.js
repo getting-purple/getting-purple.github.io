@@ -92,21 +92,26 @@ function animate() {
 
 	// Check for hitting the walls to reflect direction and spin object
 	let spinFactor=0;
-	if (o.b.offset().top + o.b.height() > window.innerHeight && o.dy > 0) { // $('body').height()
+	let reflected=false;
+	if (o.b.offset().top + o.b.height() > window.innerHeight && o.dy > 0) {
 	    o.angle=-1*o.angle;
 	    spinFactor=Math.cos(o.angle);
+	    reflected=true;
 	}
 	if (o.b.offset().top < 0 && o.dy < 0) {
 	    o.angle=-1*o.angle;
 	    spinFactor=Math.cos(o.angle) * -1;
+	    reflected=true;
 	}
 	if (o.b.offset().left < 0 && o.dx < 0) {
 	    o.angle=Math.PI-o.angle;
 	    spinFactor=Math.sin(o.angle);
+	    reflected=true;
 	}
 	if (o.b.offset().left + o.b.width() >  window.innerWidth && o.dx > 0) { // $('body').width()
 	    o.angle=Math.PI-o.angle;
 	    spinFactor=Math.sin(o.angle) * -1;
+	    reflected=true;
 	}
 	o.spinSpeed+=Math.sqrt(o.speed) * spinFactor
 
@@ -146,7 +151,7 @@ function animate() {
 	// Colisions
 	i2="bouncer"
 	o2=objects[i2];
-	if (destroy_mode && i != i2) {
+	if (destroy_mode && !reflected && i != i2) {
 	    if (!o2.overlaping.includes(o.id)) {
 		if (checkColiding(o2.b,o.b)) {
 		    mass_ratio =  (o.b.height() * o.b.width()) /  (o2.b.height() * o2.b.width())
