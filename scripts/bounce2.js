@@ -127,19 +127,16 @@ function animate() {
 	o.y = o.y + o.dy*(MS_PER_FRAME/100*o.speed);
 	o.x = o.x + o.dx*(MS_PER_FRAME/100*o.speed);
 
-	if (gravity) {
-	    if (o.b.id == 'bouncer') {
-		if(o.b.offset().top + o.b.height() <= window.innerHeight) {
+	if (gravity && o.css('position')!='fixed') {
+	    else {
+		if (o.y < FLOOR) {
 		    o.gravSpeed += Math.max(1,Math.abs(o.y - old_y));
 		    o.y = o.y + (MS_PER_FRAME/100 * o.gravSpeed);
 		}
-		else
-		{o.gravSpeed=0;
+		else {
+		    o.gravSpeed =0
+		    o.y = o.y;
 		}
-	    }
-	    else {
-		o.gravSpeed += Math.max(1,Math.abs(o.y - old_y));
-		o.y = o.y + (MS_PER_FRAME/100 * o.gravSpeed);
 	    }
 	}
 	
@@ -182,7 +179,20 @@ function animate() {
     }
 }
 
+
 // Collisions
+function checkColiding(ball,region) {
+    if (ball.css('display') == 'none' || region.css('display') == 'none') return false;
+    
+    var polygon = [ [ region.offset().left, region.offset().top ], 
+		    [ region.offset().left+region.width(),region.offset().top ], 
+		    [ region.offset().left+region.width(),region.offset().top+region.height() ], 
+		    [ region.offset().left,               region.offset().top+region.height() ] ];
+    var test=[ ball.offset().left, ball.offset().top ];
+    return inside(test, polygon);
+}
+
+//https://stackoverflow.com/a/29915728
 function inside(point, vs) {
     // ray-casting algorithm based on
     // https://wrf.ecse.rpi.edu/Research/Short_Notes/pnpoly.html
@@ -201,16 +211,6 @@ function inside(point, vs) {
     
     return inside;
 };
-function checkColiding(ball,region) {
-    if (ball.css('display') == 'none' || region.css('display') == 'none') return false;
-    
-    var polygon = [ [ region.offset().left, region.offset().top ], 
-		    [ region.offset().left+region.width(),region.offset().top ], 
-		    [ region.offset().left+region.width(),region.offset().top+region.height() ], 
-		    [ region.offset().left,               region.offset().top+region.height() ] ];
-    var test=[ ball.offset().left, ball.offset().top ];
-    return inside(test, polygon);
-}
 
 //
 function start_bouncing(by_id) {
