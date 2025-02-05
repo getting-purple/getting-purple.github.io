@@ -140,7 +140,7 @@ function animate() {
 	    if (o.y < FLOOR) {
 		o.gravSpeed += Math.max(1,Math.abs(o.y - old_y));
 		o.y = o.y + (MS_PER_FRAME/100 * o.gravSpeed);
-		o.spinSpeed += Math.log(o.gravSpeed)
+		o.spinSpeed += Math.log(o.gravSpeed)/50
 	    }
 	    else {
 		o.gravSpeed =0
