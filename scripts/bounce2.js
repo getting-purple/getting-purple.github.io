@@ -123,7 +123,7 @@ function animate() {
 	
 	// controll speed
 	o.speed = o.next_speed(o.speed,o.acc)
-	o.speed = Math.min(Math.sqrt(window.innerWidth**2 + window.innerHeight**2),
+	o.speed = Math.min(Math.sqrt(window.innerWidth**2 + window.innerHeight**2) / 3,
 			   o.speed)
 	
 	all_stopped = all_stopped && Math.abs(o.speed) < 0.1
