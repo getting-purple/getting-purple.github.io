@@ -3,6 +3,7 @@ $('.navI').click(function() {
     $('.post').hide()
     $('#'+mine).show()
     $('#'+mine).css('transform','rotate(0deg)')
+    $('#'+mine).css('position','initial')
     
     $('.navI').css('background','none')
     if (this.id.includes('button~')) {    
@@ -15,6 +16,7 @@ $('.navI').click(function() {
 $('#viewAll').click(function() {
     $('.post').show()
     $('.post').css('transform','rotate(0deg)')
+    $('.post').css('position','initial')
     $(this).css('background','darkseagreen')
 })
 $('#hideAll').click(function() {
