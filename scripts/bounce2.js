@@ -6,6 +6,7 @@ const spinThresh=0.01;
 
 let basic_objects_jq = $('body').children()
 let basic_objects = {};
+let fixed_height=window.height
 basic_objects_jq.each(function() {
     basic_objects[this.id] = {
 	id: this.id,
@@ -93,22 +94,28 @@ function animate() {
 	// Check for hitting the walls to reflect direction and spin object
 	let spinFactor=0;
 	let reflected=false;
-	if (o.b.offset().top + o.b.height() > window.innerHeight && o.dy > 0) {
+	if (o.b.css('position')=='fixed') {
+	    pos_function = o.b.position
+	}
+	else {
+	    pos_function = o.b.offset
+	}
+	if (pos_function().top + o.b.height() > window.innerHeight && o.dy > 0) {
 	    o.angle=-1*o.angle;
 	    spinFactor=Math.cos(o.angle);
 	    reflected=true;
 	}
-	if (o.b.offset().top < 0 && o.dy < 0) {
+	if (pos_function().top < 0 && o.dy < 0) {
 	    o.angle=-1*o.angle;
 	    spinFactor=Math.cos(o.angle) * -1;
 	    reflected=true;
 	}
-	if (o.b.offset().left < 0 && o.dx < 0) {
+	if (pos_function().left < 0 && o.dx < 0) {
 	    o.angle=Math.PI-o.angle;
 	    spinFactor=Math.sin(o.angle);
 	    reflected=true;
 	}
-	if (o.b.offset().left + o.b.width() >  window.innerWidth && o.dx > 0) { // $('body').width()
+	if (pos_function().left + o.b.width() >  window.innerWidth && o.dx > 0) { // $('body').width()
 	    o.angle=Math.PI-o.angle;
 	    spinFactor=Math.sin(o.angle) * -1;
 	    reflected=true;
