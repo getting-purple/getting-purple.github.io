@@ -90,6 +90,7 @@ function crawl2(zzz) {
 	o.b.css('position','fixed')
         o.b.css('top',o.y);
         o.b.css('left',o.x);
+        o.b.css('width','50%');
     }
 }
 
