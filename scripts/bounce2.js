@@ -82,15 +82,13 @@ function crawl(collect,i=0,calls=1){
     })
     return 0;
 }
-function crawl2(zzz) {
-    for (i in all_objects) {
-	o=all_objects[i];
-	o.b.insertBefore($('#index'));
-	o.b.css('position','fixed')
-        o.b.css('top',o.y);
-        o.b.css('left',o.x);
-        o.b.css('width',Math.min( window.innerWidth / 2, o.b.width()));
-    }
+
+function detatch(o) {
+    o.b.insertBefore($('#index'));
+    o.b.css('position','fixed')
+    o.b.css('top',o.y);
+    o.b.css('left',o.x);
+    o.b.css('width',Math.min( window.innerWidth / 2, o.b.width()));
 }
 
 function default_next_speed(speed,acceleration) {
@@ -174,8 +172,12 @@ function animate() {
 	if (destroy_mode && !reflected && i != i2) {
 	    if (!o2.overlaping.includes(o.id)) {
 		if (checkColiding(o2.b,o.b)) {
+		    if (super_destroy_mode) {
+			detatch(o);
+		    }
 		    mass_ratio =  (o.b.height() * o.b.width()) /  (o2.b.height() * o2.b.width())
 		    console.log('collision! '+this.id+"MR"+mass_ratio)
+
 		    //region
 		    o.speed=START_SPEED*100/mass_ratio
 		    o.angle += Math.sin(o2.angle)*Math.cos(o2.angle)
@@ -323,7 +325,7 @@ $('#goBottom').click(function() {
 $('#SUPER_destroy_mode').click(function() {
     if (!all_objects) {
 	all_objects={};
-	crawl2(crawl($('body').children()));
+	crawl($('body').children());
     }
     
     if (destroy_mode || super_destroy_mode) {
