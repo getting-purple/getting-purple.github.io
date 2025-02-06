@@ -82,16 +82,15 @@ function crawl(collect,i=0,calls=1){
     })
     return 0;
 }
-
+let exclude_ids=['stopBouncing','destroy_mode','SUPER_destroy_mode'];
 function detatch(o) {
-    if (o.b.prop('tagName')=='p') {
-	
+    if (!exclude_ids.includes(o.b.id)) {
+	o.b.insertBefore($('#index'));
+	o.b.css('position','fixed')
+	o.b.css('top',o.y);
+	o.b.css('left',o.x);
+	o.b.css('width',Math.min( window.innerWidth / 2, o.b.width()));
     }
-    o.b.insertBefore($('#index'));
-    o.b.css('position','fixed')
-    o.b.css('top',o.y);
-    o.b.css('left',o.x);
-    o.b.css('width',Math.min( window.innerWidth / 2, o.b.width()));
 }
 
 function default_next_speed(speed,acceleration) {
@@ -102,7 +101,6 @@ let keep_going=false;
 let destroy_mode=false;
 let super_destroy_mode=false;
 let gravity=false;
-let exclude_ids=['stopBouncing','destroy_mode','SUPER_destroy_mode'];
 function animate() {
     let all_stopped=true;
     for (i in objects) {
