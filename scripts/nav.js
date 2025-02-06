@@ -28,3 +28,19 @@ $('a').attr('target', function() {
   if(this.host == location.host) return '_self'
   else return '_blank'
 })
+
+fetch('https://api.github.com/repos/getting-purple/getting-purple.github.io/commits')
+    .then(response => {
+	if (!response.ok) {
+	    throw new Error('Network response was not ok');
+	}
+	return response.json(); // Assuming the API returns JSON
+    })
+    .then(data => {
+	// Do something with the data
+	$('#header').append("<em>Last updated at "+data[0].commit.committer.date+"</em>");
+    })
+    .catch(error => {
+	// Handle errors
+	console.error('There has been a problem with your fetch operation:', error);
+    });
