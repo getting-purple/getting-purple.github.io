@@ -170,9 +170,11 @@ function animate() {
 		    o.next_speed = function(speed, acc) {return Math.max(0,speed - 0.01);}
 
 		    //ball
-		    o2.angle = (o2.angle + Math.PI+randomTurn(Math.PI/4))%360
-
-		    o2.overlaping = o2.overlaping.concat(o.id);
+		    if (!super_destroy_mode) {
+			o2.angle = (o2.angle + Math.PI+randomTurn(Math.PI/4))%360
+			
+			o2.overlaping = o2.overlaping.concat(o.id);
+		    }
 		}
 	    }
 	    else {
