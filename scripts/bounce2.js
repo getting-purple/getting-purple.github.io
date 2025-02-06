@@ -21,8 +21,8 @@ basic_objects_jq.each(function() {
 	stopping:false,
 	running_children: [],
 	overlaping: [],
-	x: $(this).position().left,
-	y: $(this).position().top,
+	x: $(this).get(0).getBoundingClientRect().x,
+	y: $(this).get(0).getBoundingClientRect().y,
 	dy: 0, dx: 0,
 	next_speed: default_next_speed,
 	acc:{}
@@ -83,11 +83,11 @@ function crawl(collect,i=0,calls=1){
     })
     return 0;
 }
-function crawl2() {
+function crawl2(zzz) {
     for (i in all_objects) {
 	b=all_objects[i];
 	b.insertBefore($('#index'));
-	$(this).css('position','fixed')
+	b.css('position','fixed')
         o.b.css('top',o.y);
         o.b.css('left',o.x);
     }
@@ -323,8 +323,7 @@ $('#goBottom').click(function() {
 $('#SUPER_destroy_mode').click(function() {
     if (!all_objects) {
 	all_objects={};
-	crawl($('body').children());
-	crawl2();
+	crawl2(crawl($('body').children()));
     }
     
     if (destroy_mode || super_destroy_mode) {
