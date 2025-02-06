@@ -36,7 +36,7 @@ function crawl(collect,i=0,calls=1){
     collect.each(function(){
 	i +=1;
 	if ($(this).position && (
-	    this.id || this.name == 'p' || this.name == 'a'
+	    this.id || this.name == 'p' || this.name == 'a' || this.name == 'span' || this.name == 'div'
 	)) {
 	    if (basic_objects[this.id]) {
 		all_objects[this.id] = basic_objects[this.id]
