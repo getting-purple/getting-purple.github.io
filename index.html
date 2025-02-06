@@ -7,7 +7,7 @@
   </head>
 
   <body>
-    <div id="index"style="position: fixed;right: 0px">
+    <div id="index"style="position: fixed;right: 0px;z-index:99;">
       <table><tr><td><h2>Index</h2></td></tr>
 	<tr>
 	  <td> <button id="viewAll" class="navI" style="background:darkseagreen">View All</button></td>
@@ -21,7 +21,7 @@
 	{% endfor %}      
       </table>
     </div>
-    <div id="playgames" style="position:fixed;right:0px;bottom:0px;">
+    <div id="playgames" style="position:fixed;right:0px;bottom:50px;z-index:100;">
       {% include bounce_game.html %}
     </div>
     

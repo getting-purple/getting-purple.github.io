@@ -6,7 +6,6 @@ const spinThresh=0.01;
 
 let basic_objects_jq = $('body').children()
 let basic_objects = {};
-let fixed_height=window.height
 basic_objects_jq.each(function() {
     basic_objects[this.id] = {
 	id: this.id,
@@ -21,8 +20,8 @@ basic_objects_jq.each(function() {
 	stopping:false,
 	running_children: [],
 	overlaping: [],
-	x: $(this).get(0).getBoundingClientRect().x,
-	y: $(this).get(0).getBoundingClientRect().y,
+	x: $(this).get(0).getBoundingClientRect().left,
+	y: $(this).get(0).getBoundingClientRect().top,
 	dy: 0, dx: 0,
 	next_speed: default_next_speed,
 	acc:{}
@@ -61,8 +60,8 @@ function crawl(collect,i=0,calls=1){
 		    stopping:false,
 		    running_children: [],
 		    overlaping: [],
-		    x: $(this).get(0).getBoundingClientRect().x,
-		    y: $(this).get(0).getBoundingClientRect().y,
+		    x: $(this).get(0).getBoundingClientRect().left,
+		    y: $(this).get(0).getBoundingClientRect().top,
 		    dy: 0, dx: 0,
 		    next_speed: default_next_speed,
 		    acc:{}
