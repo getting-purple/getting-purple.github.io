@@ -182,7 +182,7 @@ function animate() {
 		    console.log('collision! '+this.id+"MR"+mass_ratio)
 
 		    //region
-		    o.speed+=o.b.speed/mass_ratio * (o.b.prop('tagName')=='DIV' && !super_destroy_mode?100:10)
+		    o.speed+=o2.b.speed/mass_ratio * (o.b.prop('tagName')=='DIV' && !super_destroy_mode?100:10)
 		    o.angle += Math.sin(o2.angle)*Math.cos(o2.angle)
 		    o.spinSpeed+=Math.sqrt(o.speed) * Math.sin(o.angle) * Math.cos(o.angle);
 		    o.next_speed = function(speed, acc) {return Math.max(0,speed - 0.01);}
