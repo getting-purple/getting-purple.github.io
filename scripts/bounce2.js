@@ -61,8 +61,8 @@ function crawl(collect,i=0,calls=1){
 		    stopping:false,
 		    running_children: [],
 		    overlaping: [],
-		    x: $(this).get(0).getBoundingClientRect().x;,
-		    y: $(this).get(0).getBoundingClientRect().y;,
+		    x: $(this).get(0).getBoundingClientRect().x;
+		    y: $(this).get(0).getBoundingClientRect().y;
 		    dy: 0, dx: 0,
 		    next_speed: default_next_speed,
 		    acc:{}
