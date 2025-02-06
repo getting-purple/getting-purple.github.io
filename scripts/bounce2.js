@@ -35,7 +35,8 @@ crawl($('body').children())
 function crawl(collect,i=0,calls=1){
     collect.each(function(){
 	i +=1;
-	let name=$(this).prop('tagName')
+	let name=$(this).prop('tagName');
+	console.log(name);
 	if ($(this).position && (
 	    this.id || name == 'P' || name == 'A' || name == 'SPAN' || name == 'DIV'
 	)) {
