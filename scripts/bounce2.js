@@ -71,8 +71,8 @@ function crawl(collect,i=0,calls=1){
 	    if (!$(this).css('position')) {
 		$(this).css('position','fixed')
 	    }
-	    o.b.css('top',o.y);
-	    o.b.css('left',o.x);
+	    $(this).css('top',o.y);
+	    $(this).css('left',o.x);
 
 	}
         kids = $(this).children()
