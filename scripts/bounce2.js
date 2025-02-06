@@ -30,7 +30,7 @@ basic_objects_jq.each(function() {
 let objects = basic_objects;
 
 
-let use_tags = ['P','A','SPAN','DIV','H1','H3','H4','EM','LI']
+let use_tags = ['P','A','SPAN','DIV','H1','H3','H4','EM','LI','TD']
 let all_objects = false;
 function crawl(collect,i=0,calls=1){
     collect.each(function(){
@@ -84,6 +84,9 @@ function crawl(collect,i=0,calls=1){
 }
 
 function detatch(o) {
+    if (o.b.prop('tagName')=='p') {
+	
+    }
     o.b.insertBefore($('#index'));
     o.b.css('position','fixed')
     o.b.css('top',o.y);
@@ -99,9 +102,11 @@ let keep_going=false;
 let destroy_mode=false;
 let super_destroy_mode=false;
 let gravity=false;
+let exclude_ids=['stopBouncing','destroy_mode','SUPER_destroy_mode'];
 function animate() {
     let all_stopped=true;
     for (i in objects) {
+	if (exclude_ids.includes(i)) continue;
 	o = objects[i]
 
 	// Check for hitting the walls to reflect direction and spin object
