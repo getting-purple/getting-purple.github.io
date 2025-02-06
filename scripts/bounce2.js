@@ -367,18 +367,19 @@ $('#speedUp').mouseup(function(){$(this).css('background','none')})
 $('#slowDown').click(function() {
     objects['bouncer'].angle += Math.PI;
     objects['bouncer'].angle += randomTurn(Math.PI*.75);
-    if (objects['bouncer'].speed > 5) {
-	temp_acc['start']=objects['bouncer'].speed
-	objects['bouncer'].next_speed  = function(speed, acc) {return speed*.9}
-	setTimeout(function() {
-	    objects['bouncer'].next_speed  = function(speed, acc) {return speed+0.01}
-	}, 500)
-    }
     for (i in objects) {
-	objects[i].spinSpeed = objects[i].spinSpeed * 0.5;
+	o = objects[i];
+	if (o.speed > 5) {
+	    temp_acc['start']=objects['bouncer'].speed
+	    objects['bouncer'].next_speed  = function(speed, acc) {return speed*.9}
+	    setTimeout(function() {
+		objects['bouncer'].next_speed  = function(speed, acc) {return speed+0.01}
+	    }, 500)
+	    o.spinSpeed = objects[i].spinSpeed * 0.5;
+	}
     }
 })
-		     
+
 $('#slowDown').mousedown(function(){$(this).css('background','lightcoral')})
 $('#slowDown').mouseup(function(){$(this).css('background','none')})
 
