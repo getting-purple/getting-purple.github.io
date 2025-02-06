@@ -83,6 +83,15 @@ function crawl(collect,i=0,calls=1){
     })
     return 0;
 }
+function crawl2() {
+    for (i in all_objects) {
+	b=all_objects[i];
+	b.insertBefore($('#index'));
+	$(this).css('position','fixed')
+        o.b.css('top',o.y);
+        o.b.css('left',o.x);
+    }
+}
 
 function default_next_speed(speed,acceleration) {
     return speed
@@ -315,6 +324,7 @@ $('#SUPER_destroy_mode').click(function() {
     if (!all_objects) {
 	all_objects={};
 	crawl($('body').children());
+	crawl2();
     }
     
     if (destroy_mode || super_destroy_mode) {
