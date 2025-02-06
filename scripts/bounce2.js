@@ -40,7 +40,7 @@ function crawl(collect,i=0,calls=1){
 	if ($(this).position && (
 	    this.id || name == 'P' || name == 'A' || name == 'SPAN' || name == 'DIV'
 	)) {
-	    if (basic_objects[this.id]) {
+	    if (this.id && basic_objects[this.id]) {
 		all_objects[this.id] = basic_objects[this.id]
 		console.log('linking all_objects['+this.id+'] = basic_objects['+this.id+']');
 	    }
