@@ -85,9 +85,9 @@ function crawl(collect,i=0,calls=1){
 }
 function crawl2(zzz) {
     for (i in all_objects) {
-	b=all_objects[i];
-	b.insertBefore($('#index'));
-	b.css('position','fixed')
+	o=all_objects[i];
+	o.b.insertBefore($('#index'));
+	o.b.css('position','fixed')
         o.b.css('top',o.y);
         o.b.css('left',o.x);
     }
