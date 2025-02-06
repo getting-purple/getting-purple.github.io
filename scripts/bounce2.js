@@ -324,7 +324,7 @@ $('#gravity').click(function() {
 });
 
 $('#goBottom').click(function() {
-    window.scrollY = FLOOR
+    window.scroll(0,FLOOR-300);
 });
 
 $('#SUPER_destroy_mode').click(function() {
