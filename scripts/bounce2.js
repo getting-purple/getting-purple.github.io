@@ -61,16 +61,19 @@ function crawl(collect,i=0,calls=1){
 		    stopping:false,
 		    running_children: [],
 		    overlaping: [],
-		    x: $(this).position().left,
-		    y: $(this).position().top,
+		    x: $(this).get(0).getBoundingClientRect().x;,
+		    y: $(this).get(0).getBoundingClientRect().y;,
 		    dy: 0, dx: 0,
 		    next_speed: default_next_speed,
 		    acc:{}
 		}
-	    }	    
-	    if (!$(this).css('position')) {
-		$(this).css('position','absolute')
 	    }
+	    if (!$(this).css('position')) {
+		$(this).css('position','fixed')
+	    }
+	    o.b.css('top',o.y);
+	    o.b.css('left',o.x);
+
 	}
         kids = $(this).children()
         if (kids.length>0){
