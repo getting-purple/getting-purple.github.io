@@ -172,7 +172,7 @@ function animate() {
 	if (destroy_mode && !reflected && i != i2) {
 	    if (!o2.overlaping.includes(o.id)) {
 		if (checkColiding(o2.b,o.b)) {
-		    if (super_destroy_mode) {
+		    if (o.speed == 0 && super_destroy_mode) {
 			detatch(o);
 		    }
 		    mass_ratio =  (o.b.height() * o.b.width()) /  (o2.b.height() * o2.b.width())
