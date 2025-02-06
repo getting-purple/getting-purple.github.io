@@ -30,6 +30,8 @@ basic_objects_jq.each(function() {
 })
 let objects = basic_objects;
 
+
+let use_tags = ['P','A','SPAN','DIV','H1','H3','H4','EM','LI']
 let all_objects = {}
 crawl($('body').children())
 function crawl(collect,i=0,calls=1){
@@ -37,9 +39,7 @@ function crawl(collect,i=0,calls=1){
 	i +=1;
 	let name=$(this).prop('tagName');
 	console.log(name);
-	if ($(this).position && (
-	    this.id || name == 'P' || name == 'A' || name == 'SPAN' || name == 'DIV'
-	)) {
+	if ($(this).position && (this.id || use_tags.includes(name))) {
 	    if (this.id && basic_objects[this.id]) {
 		all_objects[this.id] = basic_objects[this.id]
 		console.log('linking all_objects['+this.id+'] = basic_objects['+this.id+']');
