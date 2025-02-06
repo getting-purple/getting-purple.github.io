@@ -33,7 +33,6 @@ let objects = basic_objects;
 
 let use_tags = ['P','A','SPAN','DIV','H1','H3','H4','EM','LI']
 let all_objects = {}
-crawl($('body').children())
 function crawl(collect,i=0,calls=1){
     collect.each(function(){
 	i +=1;
@@ -46,7 +45,7 @@ function crawl(collect,i=0,calls=1){
 	    }
 	    else {
 		if (!this.id){
-		    this.id=this.name+i;
+		    this.id=name+i;
 		}
 		console.log('creating all_objects['+this.id+'] = {...}');
 		all_objects[this.id] = {
@@ -306,6 +305,8 @@ $('#goBottom').click(function() {
 });
 
 $('#SUPER_destroy_mode').click(function() {
+    if (all_objects == {}) crawl($('body').children())
+    
     if (destroy_mode || super_destroy_mode) {
 	super_destroy_mode = !super_destroy_mode
 	if (super_destroy_mode) {
