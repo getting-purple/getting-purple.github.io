@@ -68,6 +68,7 @@ function crawl(collect,i=0,calls=1){
 		    acc:{}
 		}
 	    }
+	    $('body').append(this.b);
 	    if (!$(this).css('position')) {
 		$(this).css('position','fixed')
 	    }
