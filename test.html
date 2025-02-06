@@ -1,0 +1,52 @@
+---
+---
+<html>
+  <head>
+    <title>getting ourple &#183</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+    <div id="index"style="position: fixed;right: 0px">
+      <table><tr><td><h2>Index</h2></td></tr>
+	<tr>
+	  <td> <button id="viewAll" class="navI" style="background:darkseagreen">View All</button></td>
+	  <td> <button id="hideAll" class="navI" style="float:left">Clear</button></td>
+	</tr>      
+	{% for post in site.posts %}
+	<tr>
+	  <td><button id="button~{{ post.real_id }}" class="navI">{{ post.date | date_to_string}}</button></td>
+	<td>{{ post.title | replace: "Fuck", "F**k" }}</td>
+	</tr>
+	{% endfor %}      
+      </table>
+      {% include bounce_game.html %}
+    </div>
+    
+    <div style="margin-left: .4%">
+      <a href="http://getting-purple.com"><h1>getting-purple.com</h1></a>
+      Source Code ~ <a href="https://github.com/getting-purple/getting-purple.github.io/" target="_blank">github.com/getting-purple/getting-purple.github.io</a>
+    </div>
+
+    {% for post in site.posts %}    
+    <div class="post" id="{{ post.real_id }}">
+      <a href="#{{post.real_id}}" style="float:right">{{ post.date | date_to_string}}</a>
+      <h3 class="essaytitle" style="margin-bottom: 0px">{{post.title}}</h3>
+      {% if post.subtitle %}
+      {% assign spacing = post.date | date: "%d" | to_i | modulo: 5 | plus: 9 %}
+      <span style="letter-spacing: {{spacing}}px; display:inline">
+	on <h4 class="essaytitle"  style="margin-bottom: 0px;display:inline">{{post.subtitle}}</h3>
+      </span>
+      {% endif %}
+<hr style="width:33.33%">
+{{ post.content }}
+</div>
+{% endfor %}
+
+<img id="bouncer"src="assets/twodollars.png" style="width:55px;display:none;position:fixed;z-index:-1;">
+<hr id='floor' style='display:none;postion:absolute;top:100000px'>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="scripts/nav.js"></script>
+<script src="scripts/bounce2.js"></script>
+</body></html>
