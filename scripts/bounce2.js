@@ -32,7 +32,7 @@ let objects = basic_objects;
 
 
 let use_tags = ['P','A','SPAN','DIV','H1','H3','H4','EM','LI']
-let all_objects = {}
+let all_objects = false;
 function crawl(collect,i=0,calls=1){
     collect.each(function(){
 	i +=1;
@@ -77,6 +77,7 @@ function crawl(collect,i=0,calls=1){
             crawl(kids,i*100*calls, calls+1);
         }
     })
+    return 0;
 }
 
 function default_next_speed(speed,acceleration) {
@@ -305,7 +306,10 @@ $('#goBottom').click(function() {
 });
 
 $('#SUPER_destroy_mode').click(function() {
-    if (all_objects == {}) crawl($('body').children())
+    if (!all_objects) {
+	all_objects={};
+	crawl($('body').children());
+    }
     
     if (destroy_mode || super_destroy_mode) {
 	super_destroy_mode = !super_destroy_mode
