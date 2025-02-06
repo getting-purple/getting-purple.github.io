@@ -37,10 +37,14 @@ fetch('https://api.github.com/repos/getting-purple/getting-purple.github.io/comm
 	return response.json(); // Assuming the API returns JSON
     })
     .then(data => {
-	// Do something with the data
-	$('#header').append("<em>last updated "+data[0].commit.committer.date.split("T")[0]+"</em>");
+	if (document.cookie == data[0].commit.committer.date) {
+	    $('#header').append("<em>last updated "+data[0].commit.committer.date.split("T")[0]+"</em>");
+	}
+	else {
+	    $('#header').append("<em style='color:red'>last updated "+data[0].commit.committer.date.split("T")[0]+"</em>");
+	    document.cookie = data[0].commit.committer.date
+	}
     })
     .catch(error => {
-	// Handle errors
 	console.error('There has been a problem with your fetch operation:', error);
     });
