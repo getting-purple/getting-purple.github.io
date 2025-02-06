@@ -362,6 +362,9 @@ $('#slowDown').click(function() {
 	    objects['bouncer'].next_speed  = function(speed, acc) {return speed+0.01}
 	}, 500)
     }
+    for (i in objects) {
+	objects[i].spinSpeed = objects[i].spinSpeed * 0.8;
+    }
 })
 		     
 $('#slowDown').mousedown(function(){$(this).css('background','lightcoral')})
