@@ -357,13 +357,13 @@ $('#slowDown').click(function() {
     objects['bouncer'].angle += randomTurn(Math.PI*.75);
     if (objects['bouncer'].speed > 5) {
 	temp_acc['start']=objects['bouncer'].speed
-	objects['bouncer'].next_speed  = function(speed, acc) {return speed*.8}
+	objects['bouncer'].next_speed  = function(speed, acc) {return speed*.9}
 	setTimeout(function() {
 	    objects['bouncer'].next_speed  = function(speed, acc) {return speed+0.01}
 	}, 500)
     }
     for (i in objects) {
-	objects[i].spinSpeed = objects[i].spinSpeed * 0.8;
+	objects[i].spinSpeed = objects[i].spinSpeed * 0.5;
     }
 })
 		     
