@@ -38,7 +38,7 @@ fetch('https://api.github.com/repos/getting-purple/getting-purple.github.io/comm
     })
     .then(data => {
 	// Do something with the data
-	$('#header').append("<em>Last updated at "+data[0].commit.committer.date+"</em>");
+	$('#header').append("<em>last updated "+data[0].commit.committer.date.split("T")[0]+"</em>");
     })
     .catch(error => {
 	// Handle errors
