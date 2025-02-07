@@ -22,7 +22,7 @@ a {
     padding: 2%;
     border:3px solid black;
     margin: 3%;
-    width: 66%;
+    max-width: 66%;
     position: relative;
 }
 button {
@@ -33,11 +33,13 @@ button {
 #index{
     float:right;
     margin-right:1%;
-    width:25%;
+    max-width:25%;
     z-index:10;
-	    
+    color:rebeccapurple;
 }
 .bounceButts {
     font-size: 17pt;
     color:rebeccapurple;
+    z-index:100;
+    max-width:25%
 }
