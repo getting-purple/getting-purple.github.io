@@ -1,7 +1,7 @@
 const g=4;
 const FLOOR=100000;
 const MS_PER_FRAME=33.33333;
-const START_SPEED=5;
+const START_SPEED=50;
 const spinThresh=0.01;
 
 let basic_objects_jq = $('body').children()
