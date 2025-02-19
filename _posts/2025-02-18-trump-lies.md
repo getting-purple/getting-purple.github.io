@@ -13,9 +13,10 @@ Trump's latest executive order concludes:
   
   
 <br>	   
-Trump openly attacks with intent to completly destroy u.s. constitutional governance, yet claims to restore it? That, "Executive power without responsibility has no place in our repblic" is the topic sentence to a paragraph which concludes, "That is why the Founders created a single President who is alone vested with _the executive Power_" to decide what the law is, is an attack on the very concept of written language with interpretable meaning.  
+Trump openly attacks with intent to completly destroy u.s. constitutional governance, yet claims to restore it? That, "Executive power without responsibility has no place in our repblic" is the topic sentence to a paragraph which concludes, "That is why the Founders created a single President who is alone vested with _the executive Power_" to decide what the law is, is an attack on the very concept of written language with interpretable meaning.   
   
 __There is no space for confusion: the authoritarian take over is currently being implemented__.  
 
   
 re: [Trump Statement "President Donald J. Trump Reins In Independent Agencies To Restore A Government That Answers To The American People"](https://www.whitehouse.gov/fact-sheets/2025/02/fact-sheet-president-donald-j-trump-reins-in-independent-agencies-to-restore-a-government-that-answers-to-the-american-people)
+[Executive order "Ensuring Accountability for All Agencies"](https://www.whitehouse.gov/presidential-actions/2025/02/ensuring-accountability-for-all-agencies/)
