@@ -47,8 +47,10 @@ button {
     z-index:100;
 }
 
-code {
+.joke {
     font-family: "Comic Sans MS", "Comic Sans", cursive;
     text-wrap: wrap;
     font-size: 10pt;
+    position: relative;
+    left: 4%
 }
