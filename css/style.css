@@ -46,3 +46,9 @@ button {
     color:rebeccapurple;
     z-index:100;
 }
+
+code {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    text-wrap: wrap;
+    font-size: 10pt;
+}
