@@ -202,6 +202,7 @@ function animate() {
 	    }
 	}
     }
+    color_background();
     
     if (keep_going && !all_stopped) {
 	setTimeout(animate, MS_PER_FRAME)}
@@ -266,6 +267,16 @@ function randomTurn(w) {
     turn = r*w - w/2;
     return turn
 }
+
+function color_background(){
+    let x=document.documentElement.scrollTop || document.body.scrollTop;
+    x = x/1000;
+    let r=231+x;
+    let g=195+x/2;
+    let b=150 + ( (x-200)**2/412.4) ;
+    $('body').css('background', "rgb("+r+", "+g+", "+b+")");
+}
+
 
 $('#startBouncing').click(function() {
     if (!keep_going) {
