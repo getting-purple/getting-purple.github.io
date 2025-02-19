@@ -21,9 +21,7 @@ __There is no space for confusion: the authoritarian take over is currently bein
 The relevant part of the executive order reads: (emphasis added)  
 <br>
   
-  
-    Sec. 7.  Rules of Conduct Guiding Federal Employees’ Interpretation of the Law. The President and the Attorney General, subject to the President’s supervision and control, shall provide __authoritative__ interpretations of law for the executive branch.  The President and the Attorney General’s opinions on questions of law are controlling on all employees in the conduct of their official duties.  No employee of the executive branch acting in their official capacity may advance an interpretation of the law as the position of the United States that contravenes __the President or the Attorney General’s opinion__ on a matter of law, including but not limited to the issuance of regulations, guidance, and positions advanced in litigation, unless authorized to do so by the President or in writing by the Attorney General.  
-  
+  Sec. 7.  Rules of Conduct Guiding Federal Employees’ Interpretation of the Law. The President and the Attorney General, subject to the President’s supervision and control, shall provide __authoritative__ interpretations of law for the executive branch.  The President and the Attorney General’s opinions on questions of law are controlling on all employees in the conduct of their official duties.  No employee of the executive branch acting in their official capacity may advance an interpretation of the law as the position of the United States that contravenes __the President or the Attorney General’s opinion__ on a matter of law, including but not limited to the issuance of regulations, guidance, and positions advanced in litigation, unless authorized to do so by the President or in writing by the Attorney General.  
   
 <br>  
 re: [Trump Statement "President Donald J. Trump Reins In Independent Agencies To Restore A Government That Answers To The American People"](https://www.whitehouse.gov/fact-sheets/2025/02/fact-sheet-president-donald-j-trump-reins-in-independent-agencies-to-restore-a-government-that-answers-to-the-american-people)  
