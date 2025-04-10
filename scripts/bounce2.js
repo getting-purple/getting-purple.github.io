@@ -30,7 +30,7 @@ basic_objects_jq.each(function() {
 let objects = basic_objects;
 
 
-let use_tags = ['P','A','SPAN','DIV','H1','H3','H4','EM','LI','TD']
+let use_tags = ['P','A','SPAN','DIV','H1','H3','H4','EM','LI','TD','IMG']
 let all_objects = false;
 function crawl(collect,i=0,calls=1){
     collect.each(function(){
