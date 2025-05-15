@@ -1,0 +1,27 @@
+body {
+  background: #6e28d9;
+  padding: 0 24px;
+  margin: 0;
+  height: 100vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.book {
+  border: 5px solid black;
+  height: 50px;
+  width: 400px;
+  position: relative;
+  background: #6e28d9;
+  /* writing-mode: vertical-rl; */
+  padding: 7px;
+  margin: .5px;
+}
+
+.shelf{
+  border: 5px solid black;
+  border-bottom: 5px solid black;
+  position:relative;
+  transform: skew(0deg,13deg) rotate(90deg);
+}
