@@ -5,8 +5,8 @@ $('.book').click(function() {
 	$(this).css('left','0px')
 	out[this.id] = false;
     } else {
-	$(this).css('top','140px')
-	$(this).css('left','40px')
+	$(this).css('top','210px')
+	$(this).css('left','60px')
 	out[this.id] = true;
     }
 });

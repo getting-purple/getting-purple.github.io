@@ -23,8 +23,8 @@ body {
   z-index:auto;
 }
 .book:hover {
-    top: 140px;
-    left: 40px;
+    top: 210px;
+    left: 60px;
 }
 
 .title{
@@ -77,8 +77,20 @@ body {
     top: 45px;
     z-index:64;
     position: relative;
+    color: rgb(64, 55, 62);
 }
 
 iframe {
     transform: rotate(90deg);
+    position:relative;
+    top:-90px;
+    left:-85px;
+}
+
+img {
+    transform: rotate(90deg);
+    position:relative;
+    top:-50px;
+    left:-50px;
+    height: 100%;
 }
