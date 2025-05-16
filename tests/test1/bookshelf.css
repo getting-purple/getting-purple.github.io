@@ -22,8 +22,8 @@ body {
   z-index:auto;
 }
 .book:hover {
-    top: 210px;
-    left: 60px;
+    top: 231px;
+    left: 66px;
 }
 
 .title{
@@ -106,8 +106,8 @@ iframe {
 img {
     transform: rotate(90deg);
     position:relative;
-    top:-50px;
-    left:-50px;
-    height: 100%;
+    top:-75px;
+    left:-65px;
+    height: 164%;
 }
 
