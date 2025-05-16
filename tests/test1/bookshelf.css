@@ -2,9 +2,8 @@ body {
   background: #6e28d9;
   padding: 0 24px;
   margin: 0;
-  height: 100vh;
   color: white;
-  display: flex;
+  display: flex;		
   justify-content: center;
   align-items: center;
 }
@@ -47,7 +46,8 @@ body {
   transform: skew(11deg,0deg) rotate(180deg);
 }
 .top {
-  border: 5px solid black;
+    border-bottom: 5px solid black;
+    border-right: 5px solid black;
   height: 250px;
   width: 5px;
   position: relative;
@@ -60,7 +60,9 @@ body {
   left: -50px;
   transform: skew(11deg,0deg) rotate(180deg);
 }
-
+#space {
+    width: 300px;
+}
 .shelf{
   border: 5px solid black;
   border-bottom: 5px solid black;
@@ -71,11 +73,26 @@ body {
 .wall{
     float:left;
     background: black;
-    width: 500px;
-    height: 470px;
-    top: 45px;
+    width: 300px;
+    height: 1000px;
+    top: 0px;
+    right: -4px;
     z-index:64;
     position: relative;
+    color: rgb(64, 55, 62);
+    transform: skew(0deg,-15deg);
+}
+.ceiling {
+    float:left;
+    background: black;
+    width: 300px;
+    height: 155px;
+    top: 45px;
+    z-index:63;
+    position: relative;
+    top: -225px;
+    right: 530px;
+    transform: rotate(73deg) skew(0deg, -60deg);
     color: rgb(64, 55, 62);
 }
 
@@ -93,3 +110,4 @@ img {
     left:-50px;
     height: 100%;
 }
+
