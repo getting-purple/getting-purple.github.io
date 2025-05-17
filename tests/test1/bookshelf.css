@@ -1,5 +1,5 @@
 body {
-  background: #6e28d9;
+    background-color:rgb(231, 195, 247);
   padding: 0 24px;
   margin: 0;
   color: white;
@@ -69,6 +69,7 @@ body {
   position:relative;
   transform: skew(0deg,13deg) rotate(90deg);
   float:left;
+  background:#004d4d;
 }
 .wall{
     float:left;
