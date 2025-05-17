@@ -111,3 +111,10 @@ img {
     height: 164%;
 }
 
+#titled {
+    position: fixed;
+    left: 25px;
+    top: 15px;
+    margin: 0px;
+}
+
