@@ -26,10 +26,9 @@ body {
     left: 66px;
 }
 
-.title{
-    z-index:164;
+.spineText{
     position:relative;
-    background: #6e28d9;
+    top: 7px;	
 }
 .front {
   border: 5px solid black;
